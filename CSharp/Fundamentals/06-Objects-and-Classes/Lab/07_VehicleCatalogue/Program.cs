@@ -90,7 +90,6 @@ namespace _07_VehicleCatalogue
 
             public List<Car> Cars { get; set;}
             public List<Truck> Trucks { get; set;}
-
         }
     }
 }
