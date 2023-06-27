@@ -1,7 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-using static _05_TeamworkProjects.Program;
-
-namespace _05_TeamworkProjects
+﻿namespace _05_TeamworkProjectsV2
 {
     internal class Program
     {
@@ -51,12 +48,18 @@ namespace _05_TeamworkProjects
 
                 bool isFound = false;
                 bool isMember = false;
+                bool isCreator = false;
 
                 foreach (Team team in teams)
                 {
                     if (toTeam == team.TeamName)
                     {
-                        isFound = true; 
+                        isFound = true;                        
+                    }
+
+                    if (user == team.Creator)
+                    {
+                        isCreator = true;                        
                     }
 
                     foreach (string member in team.Members)
@@ -64,22 +67,7 @@ namespace _05_TeamworkProjects
                         if (user == member)
                         {
                             isMember = true;
-                            Console.WriteLine($"Member {user} cannot join team {toTeam}!");
                         }
-                        break;
-                    }
-
-                    if (user == team.Creator)
-                    {
-                        isMember = true;
-                        Console.WriteLine($"Member {user} cannot join team {toTeam}!");
-                    }
-
-                    if (isFound == true && isMember == false)
-                    {
-                        team.Members.Add(user);   
-                        team.MembersCount++;
-                        break;
                     }
                 }
 
@@ -87,13 +75,22 @@ namespace _05_TeamworkProjects
                 {
                     Console.WriteLine($"Team {toTeam} does not exist!");
                 }
+                else if (isMember || isCreator)
+                {
+                    Console.WriteLine($"Member {user} cannot join team {toTeam}!");
+                }
+                else
+                {
+                    Team teamFound = teams.FirstOrDefault(t => t.TeamName == toTeam);
+                    teamFound.Members.Add(user);
+                }
 
                 command = Console.ReadLine();
             }
 
-            foreach (Team team in teams.OrderByDescending(x => x.MembersCount))
+            foreach (Team team in teams.OrderByDescending(x => x.Members.Count).ThenBy(x => x.TeamName))
             {
-                if (team.MembersCount > 0)
+                if (team.Members.Count > 0)
                 {
                     Console.WriteLine(team.TeamName);
                     Console.WriteLine($"- {team.Creator}");
@@ -104,12 +101,12 @@ namespace _05_TeamworkProjects
                     {
                         Console.WriteLine($"-- {member}");
                     }
-                }   
+                }
             }
 
             Console.WriteLine("Teams to disband:");
 
-            List<Team> disbandTeams = teams.Where(x => x.MembersCount == 0).ToList();            
+            List<Team> disbandTeams = teams.Where(x => x.Members.Count == 0).ToList();
 
             foreach (Team team in disbandTeams.OrderBy(x => x.TeamName))
             {
@@ -121,16 +118,15 @@ namespace _05_TeamworkProjects
         {
             public Team(string creator, string teamName, List<string> members)
             {
+                TeamName = teamName;
                 Creator = creator;
-                TeamName = teamName;               
                 Members = members;
             }
 
-            public string Creator { get; set; }
             public string TeamName { get; set; }
-            public int MembersCount { get; set; }
+            public string Creator { get; set; }
             public List<string> Members { get; set; }
-           
+
             public void SortMembers(List<string> members)
             {
                 Members.Sort();
