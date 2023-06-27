@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06_VehicleCatalogue", "06_V
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07_OrderByAge", "07_OrderByAge\07_OrderByAge.csproj", "{E8FB040E-E33B-4642-B7C8-D7A190C37094}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05_TeamworkProjects", "05_TeamworkProjectsV2\05_TeamworkProjects.csproj", "{429AAC63-11C1-452E-9198-3EF8288EBC58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05_TeamworkProjectsV2", "05_TeamworkProjectsV2\05_TeamworkProjectsV2.csproj", "{429AAC63-11C1-452E-9198-3EF8288EBC58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
