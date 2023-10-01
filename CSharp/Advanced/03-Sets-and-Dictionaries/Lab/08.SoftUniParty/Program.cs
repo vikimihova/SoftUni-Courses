@@ -13,11 +13,11 @@ namespace _08.SoftUniParty
 
             while (input != "PARTY")
             {
-                if (input[0] >= 0 && input[0] <= 9)
+                if (char.IsDigit(input[0]))
                 {
                     vipGuests.Add(input);
                 }
-                else
+                else 
                 {
                     regularGuests.Add(input);
                 }
@@ -29,7 +29,7 @@ namespace _08.SoftUniParty
 
             while (input != "END")
             {
-                if (input[0] >= 0 && input[0] <= 9)
+                if (char.IsDigit(input[0]))
                 {
                     vipGuests.Remove(input);
                 }
