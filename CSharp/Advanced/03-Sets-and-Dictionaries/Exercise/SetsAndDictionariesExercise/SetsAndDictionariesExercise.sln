@@ -3,21 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.UniqueUsernames", "01.UniqueUsernames\01.UniqueUsernames.csproj", "{BEA6C11E-2E5B-4E99-991B-13955254CA71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.UniqueUsernames", "01.UniqueUsernames\01.UniqueUsernames.csproj", "{BEA6C11E-2E5B-4E99-991B-13955254CA71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.SetsOfElements", "02.SetsOfElements\02.SetsOfElements.csproj", "{DA58A47F-DB07-462E-B052-E782AC1A5831}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.SetsOfElements", "02.SetsOfElements\02.SetsOfElements.csproj", "{DA58A47F-DB07-462E-B052-E782AC1A5831}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.PeriodicTable", "03.PeriodicTable\03.PeriodicTable.csproj", "{2E9CC0D5-F7AE-4D42-9DA3-C61CCBDC583E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.PeriodicTable", "03.PeriodicTable\03.PeriodicTable.csproj", "{2E9CC0D5-F7AE-4D42-9DA3-C61CCBDC583E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.EvenTimes", "04.EvenTimes\04.EvenTimes.csproj", "{41F31E9E-BA21-42A3-BB40-CA798784E836}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.EvenTimes", "04.EvenTimes\04.EvenTimes.csproj", "{41F31E9E-BA21-42A3-BB40-CA798784E836}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.CountSymbols", "05.CountSymbols\05.CountSymbols.csproj", "{79DF182A-C575-438D-BC1F-F8CC7F07DD92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.CountSymbols", "05.CountSymbols\05.CountSymbols.csproj", "{79DF182A-C575-438D-BC1F-F8CC7F07DD92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.Wardrobe", "06.Wardrobe\06.Wardrobe.csproj", "{19080DFC-E0BE-4DB6-97BF-E073772BB132}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.Wardrobe", "06.Wardrobe\06.Wardrobe.csproj", "{19080DFC-E0BE-4DB6-97BF-E073772BB132}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.TheV-Logger", "07.TheV-Logger\07.TheV-Logger.csproj", "{4037D495-E54A-483E-8D17-35A15BA3C579}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.TheV-Logger", "07.TheV-Logger\07.TheV-Logger.csproj", "{4037D495-E54A-483E-8D17-35A15BA3C579}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.Ranking", "08.Ranking\08.Ranking.csproj", "{0E9E5D72-061C-4A85-842B-D5ED9B6A5F5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08.Ranking", "08.Ranking\08.Ranking.csproj", "{0E9E5D72-061C-4A85-842B-D5ED9B6A5F5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.SoftUniExamResults", "09.SoftUniExamResults\09.SoftUniExamResults.csproj", "{44D37238-5499-497D-8203-8FD6AFFC6978}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10.ForceBook", "10.ForceBook\10.ForceBook.csproj", "{14D0681D-E097-46E7-ACC6-DE441F7BA4FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,14 @@ Global
 		{0E9E5D72-061C-4A85-842B-D5ED9B6A5F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E9E5D72-061C-4A85-842B-D5ED9B6A5F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E9E5D72-061C-4A85-842B-D5ED9B6A5F5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44D37238-5499-497D-8203-8FD6AFFC6978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44D37238-5499-497D-8203-8FD6AFFC6978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44D37238-5499-497D-8203-8FD6AFFC6978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44D37238-5499-497D-8203-8FD6AFFC6978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14D0681D-E097-46E7-ACC6-DE441F7BA4FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14D0681D-E097-46E7-ACC6-DE441F7BA4FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14D0681D-E097-46E7-ACC6-DE441F7BA4FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14D0681D-E097-46E7-ACC6-DE441F7BA4FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
