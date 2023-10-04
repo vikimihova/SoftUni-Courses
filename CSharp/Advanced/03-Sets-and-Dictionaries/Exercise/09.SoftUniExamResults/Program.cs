@@ -4,43 +4,43 @@
     {
         static void Main(string[] args)
         {
-            Dictionary<string, int> languageSubmissionsPair = new();
+            Dictionary<string, int> submissionsPerLanguage = new();
 
-            Dictionary<string, int> studentPointsPair = new();
+            Dictionary<string, int> pointsPerStudent = new();
 
             string input = Console.ReadLine();
 
             while (input != "exam finished")
             {
-                string[] contents = input.Split("-", StringSplitOptions.RemoveEmptyEntries);
+                string[] tokens = input.Split("-", StringSplitOptions.RemoveEmptyEntries);
 
-                string student = contents[0];
+                string student = tokens[0];
 
-                if (contents[1] == "banned" && studentPointsPair.ContainsKey(student))
+                if (tokens[1] == "banned" && pointsPerStudent.ContainsKey(student))
                 {
-                    studentPointsPair.Remove(student);
+                    pointsPerStudent.Remove(student);
                 }
                 else
                 {
-                    string language = contents[1];
-                    int points = int.Parse(contents[2]);
+                    string language = tokens[1];
+                    int points = int.Parse(tokens[2]);
 
-                    if (!studentPointsPair.ContainsKey(student))
+                    if (!pointsPerStudent.ContainsKey(student))
                     {
-                        studentPointsPair.Add(student, points);
+                        pointsPerStudent.Add(student, points);
                     }
-                    else if (points > studentPointsPair[student])
+                    else if (points > pointsPerStudent[student])
                     {
-                        studentPointsPair[student] = points;
+                        pointsPerStudent[student] = points;
                     }
 
-                    if (languageSubmissionsPair.ContainsKey(language))
+                    if (submissionsPerLanguage.ContainsKey(language))
                     {
-                        languageSubmissionsPair[language]++;
+                        submissionsPerLanguage[language]++;
                     }
                     else
                     {
-                        languageSubmissionsPair.Add(language, 1);
+                        submissionsPerLanguage.Add(language, 1);
                     }
                 }
 
@@ -49,14 +49,14 @@
 
             Console.WriteLine("Results:");
 
-            foreach (var (student, points) in studentPointsPair.OrderByDescending(x => x.Value).ThenBy(x => x.Key))
+            foreach (var (student, points) in pointsPerStudent.OrderByDescending(x => x.Value).ThenBy(x => x.Key))
             {
                 Console.WriteLine($"{student} | {points}");
             }
 
             Console.WriteLine("Submissions:");
 
-            foreach (var (language, submissions) in languageSubmissionsPair.OrderByDescending(x => x.Value).ThenBy(x => x.Key))
+            foreach (var (language, submissions) in submissionsPerLanguage.OrderByDescending(x => x.Value).ThenBy(x => x.Key))
             {
                 Console.WriteLine($"{language} - {submissions}");
             }
