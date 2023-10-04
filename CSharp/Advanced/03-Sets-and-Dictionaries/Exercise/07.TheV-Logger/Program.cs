@@ -12,11 +12,10 @@ namespace _07.TheV_Logger
 
             while (input != "Statistics")
             {
-                string[] inputContent = input
-                                   .Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                string[] tokens = input.Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
-                string vloggername = inputContent[0];
-                string command = inputContent[1];
+                string vloggername = tokens[0];
+                string command = tokens[1];
 
                 if (command == "joined" && !log.ContainsKey(vloggername))
                 {
@@ -30,7 +29,7 @@ namespace _07.TheV_Logger
                 }
                 else if (command == "followed")
                 {
-                    string vloggername2 = inputContent[2];
+                    string vloggername2 = tokens[2];
 
                     if (!log.ContainsKey(vloggername) || !log.ContainsKey(vloggername2) || vloggername == vloggername2)
                     {
