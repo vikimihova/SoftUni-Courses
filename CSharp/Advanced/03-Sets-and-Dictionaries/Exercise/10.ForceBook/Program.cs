@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Dictionary<string, List<string>> sideUserPair = new();
+            Dictionary<string, List<string>> usersPerForceSide = new();
 
             string command = Console.ReadLine();
 
@@ -12,46 +12,46 @@
             {
                 if (command.Contains("|"))
                 {
-                    string[] commandParts = command.Split(" | ");
-                    string side = commandParts[0];
-                    string user = commandParts[1];
+                    string[] tokens = command.Split(" | ");
+                    string side = tokens[0];
+                    string user = tokens[1];
 
-                    if (sideUserPair.Any(x => x.Value.Contains(user)))
+                    if (usersPerForceSide.Any(x => x.Value.Contains(user)))
                     {
                         command = Console.ReadLine();
                         continue;
                     }
 
-                    if (!sideUserPair.ContainsKey(side))
+                    if (!usersPerForceSide.ContainsKey(side))
                     {
-                        sideUserPair.Add(side, new List<string>());
+                        usersPerForceSide.Add(side, new List<string>());
                     }
 
-                    if (!sideUserPair[side].Contains(user))
+                    if (!usersPerForceSide[side].Contains(user))
                     {
-                        sideUserPair[side].Add(user);
+                        usersPerForceSide[side].Add(user);
                     }
                 }
                 else if (command.Contains("->"))
                 {
-                    string[] commandParts = command.Split(" -> ");
-                    string user = commandParts[0];
-                    string side = commandParts[1];
+                    string[] tokens = command.Split(" -> ");
+                    string user = tokens[0];
+                    string side = tokens[1];
 
-                    if (sideUserPair.Any(x => x.Value.Contains(user)))
+                    if (usersPerForceSide.Any(x => x.Value.Contains(user)))
                     {
-                        foreach (var kvp in sideUserPair.Where(x => x.Value.Contains(user)))
+                        foreach (var kvp in usersPerForceSide.Where(x => x.Value.Contains(user)))
                         {
                             kvp.Value.Remove(user);
                         }
                     }
 
-                    if (!sideUserPair.ContainsKey(side))
+                    if (!usersPerForceSide.ContainsKey(side))
                     {
-                        sideUserPair.Add(side, new List<string>());
+                        usersPerForceSide.Add(side, new List<string>());
                     }
 
-                    sideUserPair[side].Add(user);
+                    usersPerForceSide[side].Add(user);
 
                     Console.WriteLine($"{user} joins the {side} side!");
                 }
@@ -59,7 +59,7 @@
                 command = Console.ReadLine();
             }
 
-            foreach (var (side, users) in sideUserPair.OrderByDescending(x => x.Value.Count).ThenBy(x => x.Key))
+            foreach (var (side, users) in usersPerForceSide.OrderByDescending(x => x.Value.Count).ThenBy(x => x.Key))
             {
                 if (users.Count > 0)
                 {
