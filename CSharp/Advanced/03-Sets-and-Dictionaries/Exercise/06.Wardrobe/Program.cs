@@ -40,6 +40,7 @@ namespace _06.Wardrobe
 
             string[] wantedOutfit = Console.ReadLine()
                                     .Split(" ", StringSplitOptions.RemoveEmptyEntries);
+
             string wantedColour = wantedOutfit[0];
             string wantedClothing = wantedOutfit[1];
 
