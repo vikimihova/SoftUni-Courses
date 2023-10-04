@@ -6,7 +6,7 @@ namespace _08.Ranking
     {
         static void Main(string[] args)
         {
-            Dictionary<string, string> contestPasswords = new();
+            Dictionary<string, string> passwordByContest = new();
 
             string input = Console.ReadLine();
 
@@ -15,9 +15,9 @@ namespace _08.Ranking
                 string contest = input.Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
                 string password = input.Split(":", StringSplitOptions.RemoveEmptyEntries)[1];
 
-                if (!contestPasswords.ContainsKey(contest) )
+                if (!passwordByContest.ContainsKey(contest) )
                 {
-                    contestPasswords.Add(contest, password);
+                    passwordByContest.Add(contest, password);
                 }
 
                 input = Console.ReadLine();
@@ -29,14 +29,14 @@ namespace _08.Ranking
 
             while (input != "end of submissions")
             {
-                string[] content = input.Split("=>", StringSplitOptions.RemoveEmptyEntries);
+                string[] tokens = input.Split("=>", StringSplitOptions.RemoveEmptyEntries);
 
-                string contest = content[0];
-                string password = content[1];
-                string username = content[2];
-                int points = int.Parse(content[3]);
+                string contest = tokens[0];
+                string password = tokens[1];
+                string username = tokens[2];
+                int points = int.Parse(tokens[3]);
 
-                if (!contestPasswords.ContainsKey(contest) || contestPasswords[contest] != password)
+                if (!passwordByContest.ContainsKey(contest) || passwordByContest[contest] != password)
                 {
                     input = Console.ReadLine();
                     continue;
