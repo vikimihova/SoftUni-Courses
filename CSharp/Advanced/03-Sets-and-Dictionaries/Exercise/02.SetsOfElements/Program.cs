@@ -4,7 +4,10 @@
     {
         static void Main(string[] args)
         {
-            int[] setSizes = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            int[] setSizes = Console.ReadLine()
+                             .Split()
+                             .Select(int.Parse)
+                             .ToArray();
 
             int firstSetSize = setSizes[0];
             int secondSetSize = setSizes[1];
