@@ -4,23 +4,23 @@
     {
         static void Main(string[] args)
         {
-            SortedDictionary<char, int> symbols = new SortedDictionary<char, int>();
+            SortedDictionary<char, int> countBySymbols = new SortedDictionary<char, int>();
 
             string text = Console.ReadLine();
 
             for (int i = 0; i < text.Length; i++)
             {
-                if (symbols.ContainsKey(text[i]))
+                if (countBySymbols.ContainsKey(text[i]))
                 {
-                    symbols[text[i]]++;
+                    countBySymbols[text[i]]++;
                 }
                 else
                 {
-                    symbols.Add(text[i], 1);
+                    countBySymbols.Add(text[i], 1);
                 }
             }
 
-            foreach (var symbol in symbols)
+            foreach (var symbol in countBySymbols)
             {
                 Console.WriteLine($"{symbol.Key}: {symbol.Value} time/s");
             }
