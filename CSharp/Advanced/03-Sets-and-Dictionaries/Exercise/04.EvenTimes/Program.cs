@@ -6,23 +6,23 @@
         {
             int numberOfEntries = int.Parse(Console.ReadLine());
 
-            Dictionary<int, int> numbers = new Dictionary<int, int>();
+            Dictionary<int, int> countByNumbers = new Dictionary<int, int>();
 
             for (int i = 0; i < numberOfEntries; i++)
             {
                 int inputNumber = int.Parse(Console.ReadLine());
 
-                if (numbers.ContainsKey(inputNumber))
+                if (countByNumbers.ContainsKey(inputNumber))
                 {
-                    numbers[inputNumber]++;
+                    countByNumbers[inputNumber]++;
                 }
                 else
                 {
-                    numbers.Add(inputNumber, 1);
+                    countByNumbers.Add(inputNumber, 1);
                 }
             }
 
-            Console.WriteLine(numbers.Where(x => x.Value % 2 == 0).First().Key);
+            Console.WriteLine(countByNumbers.Where(x => x.Value % 2 == 0).First().Key);
         }
     }
 }
