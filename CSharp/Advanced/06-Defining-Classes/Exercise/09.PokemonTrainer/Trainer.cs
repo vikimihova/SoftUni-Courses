@@ -10,6 +10,7 @@ namespace _09.PokemonTrainer
     {
         public Trainer(string name)
         {
+			Name = name;
             BadgesCount = 0;
 			Pokemons = new List<Pokemon>();
         }

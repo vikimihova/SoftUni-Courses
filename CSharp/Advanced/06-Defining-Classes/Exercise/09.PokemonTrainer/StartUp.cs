@@ -9,7 +9,6 @@ namespace _09.PokemonTrainer
         static void Main(string[] args)
         {
             List<Trainer> trainers = new();
-            HashSet<string> trainerNames = new();
 
             string command;
 
@@ -23,15 +22,19 @@ namespace _09.PokemonTrainer
                 int pokemonHealth = int.Parse(commandTokens[3]);
 
                 Trainer trainer = new Trainer(trainerName);
-
-                if (!trainerNames.Contains(trainerName))
-                {
-                    trainers.Add(trainer);
-                }
-
                 Pokemon pokemon = new Pokemon(pokemonName, pokemonElement, pokemonHealth);
 
-                trainer.Pokemons.Add(pokemon);
+                int trainerIndex = trainers.FindIndex(x => x.Name == trainerName);
+
+                if (trainerIndex < 0)
+                {
+                    trainer.Pokemons.Add(pokemon);
+                    trainers.Add(trainer);
+                }
+                else
+                {
+                    trainers[trainerIndex].Pokemons.Add(pokemon);
+                }
             }
 
             while ((command = Console.ReadLine()) != "End")
