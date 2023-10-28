@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_DiagonalDifference", "01_DiagonalDifference\01_DiagonalDifference.csproj", "{3ECFA84E-3977-4949-B7CA-6E4217F678D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.DiagonalDifference", "01.DiagonalDifference\01.DiagonalDifference.csproj", "{3ECFA84E-3977-4949-B7CA-6E4217F678D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02_SquaresInMatrix", "02_SquaresInMatrix\02_SquaresInMatrix.csproj", "{DA48DB2A-B89A-43CF-AEB2-628B64A88B54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.SquaresInMatrix", "02.SquaresInMatrix\02.SquaresInMatrix.csproj", "{DA48DB2A-B89A-43CF-AEB2-628B64A88B54}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03_MaximalSum", "03_MaximalSum\03_MaximalSum.csproj", "{F35F3724-A3A6-47E9-A876-783BB6EF38E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.MaximalSum", "03.MaximalSum\03.MaximalSum.csproj", "{F35F3724-A3A6-47E9-A876-783BB6EF38E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04_MatrixShuffling", "04_MatrixShuffling\04_MatrixShuffling.csproj", "{45BE25CD-DE1C-4F2F-888B-5E5FA59A81E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.MatrixShuffling", "04.MatrixShuffling\04.MatrixShuffling.csproj", "{45BE25CD-DE1C-4F2F-888B-5E5FA59A81E2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05_SnakeMoves", "05_SnakeMoves\05_SnakeMoves.csproj", "{EC37E8D6-8269-462E-8AA8-349D87C05FA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.SnakeMoves", "05.SnakeMoves\05.SnakeMoves.csproj", "{EC37E8D6-8269-462E-8AA8-349D87C05FA2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06_JaggedArraysManipulator", "06_JaggedArraysManipulator\06_JaggedArraysManipulator.csproj", "{8D07A6F9-CDA3-4021-9801-BDD27A672780}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.JaggedArraysManipulator", "06.JaggedArraysManipulator\06.JaggedArraysManipulator.csproj", "{8D07A6F9-CDA3-4021-9801-BDD27A672780}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07_KnightGame", "07_KnightGame\07_KnightGame.csproj", "{4D080BAA-E913-4D96-88A9-E50FF039DAB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.KnightGame", "07.KnightGame\07.KnightGame.csproj", "{4D080BAA-E913-4D96-88A9-E50FF039DAB8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08_Bombs", "08_Bombs\08_Bombs.csproj", "{43F883A3-81E8-45B4-B583-FEC4EDAE775A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08.Bombs", "08.Bombs\08.Bombs.csproj", "{43F883A3-81E8-45B4-B583-FEC4EDAE775A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09_Miner", "09_Miner\09_Miner.csproj", "{6C9029E2-EBE8-4ABB-BFE7-75B1C00D56DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09.Miner", "09.Miner\09.Miner.csproj", "{6C9029E2-EBE8-4ABB-BFE7-75B1C00D56DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_RadioactiveMutantVampireBunnies", "10_RadioactiveMutantVampireBunnies\10_RadioactiveMutantVampireBunnies.csproj", "{B87A7001-E982-44F1-A5A9-1546BAFD9970}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10.RadioactiveMutantVampireBunnies", "10.RadioactiveMutantVampireBunnies\10.RadioactiveMutantVampireBunnies.csproj", "{B87A7001-E982-44F1-A5A9-1546BAFD9970}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
