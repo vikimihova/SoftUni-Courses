@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.Students", "04.Students\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.Students2.0", "05.Students2.0\05.Students2.0.csproj", "{A22E54D4-94FA-4D6C-878B-4652E488594A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.Students2.0_V2", "05.Students2.0_V2\05.Students2.0_V2.csproj", "{31BB35BC-1ACA-43C2-83D9-6F12707097A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.Students2.0.V2", "05.Students2.0.V2\05.Students2.0.V2.csproj", "{31BB35BC-1ACA-43C2-83D9-6F12707097A1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.StoreBoxes", "06.StoreBoxes\06.StoreBoxes.csproj", "{F6E0D880-81DE-4A90-B1FC-11C67EC77166}"
 EndProject
