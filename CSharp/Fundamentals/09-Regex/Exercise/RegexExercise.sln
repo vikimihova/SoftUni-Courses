@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_Furniture", "01_Furniture\01_Furniture.csproj", "{1B52F032-CA6E-4193-AD54-D3F22179BA8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.Furniture", "01.Furniture\01.Furniture.csproj", "{1B52F032-CA6E-4193-AD54-D3F22179BA8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Race", "02_Race\02_Race.csproj", "{1D4DF27B-BC31-4C74-B7A0-BDDF279AFB54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.Race", "02.Race\02.Race.csproj", "{1D4DF27B-BC31-4C74-B7A0-BDDF279AFB54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_SoftUniBarIncome", "03_SoftUniBarIncome\03_SoftUniBarIncome.csproj", "{A54923FC-BE50-408F-AA1B-9FC3CD5F05C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.SoftUniBarIncome", "03.SoftUniBarIncome\03.SoftUniBarIncome.csproj", "{A54923FC-BE50-408F-AA1B-9FC3CD5F05C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_AdvertisementMessage", "01_AdvertisementMessage\01_AdvertisementMessage.csproj", "{951AFD70-9E17-46CE-98D9-AF1A31038CBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.AdvertisementMessage", "01.AdvertisementMessage\01.AdvertisementMessage.csproj", "{951AFD70-9E17-46CE-98D9-AF1A31038CBF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02_Articles", "02_Articles\02_Articles.csproj", "{8BA877A8-469F-4D04-BE02-18C8976FF713}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.Articles", "02.Articles\02.Articles.csproj", "{8BA877A8-469F-4D04-BE02-18C8976FF713}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03_Articles2.0", "03_Articles2.0\03_Articles2.0.csproj", "{CB5924BF-4880-4351-811D-4270FC32C8CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.Articles2.0", "03.Articles2.0\03.Articles2.0.csproj", "{CB5924BF-4880-4351-811D-4270FC32C8CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04_Students", "04_Students\04_Students.csproj", "{EFB5E396-28CE-44F4-9852-B6852A21FC9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.Students", "04.Students\04.Students.csproj", "{EFB5E396-28CE-44F4-9852-B6852A21FC9C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06_VehicleCatalogue", "06_VehicleCatalogue\06_VehicleCatalogue.csproj", "{8824D952-F39E-4941-9D18-D0ADD888F14C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.VehicleCatalogue", "06.VehicleCatalogue\06.VehicleCatalogue.csproj", "{8824D952-F39E-4941-9D18-D0ADD888F14C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07_OrderByAge", "07_OrderByAge\07_OrderByAge.csproj", "{E8FB040E-E33B-4642-B7C8-D7A190C37094}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.OrderByAge", "07.OrderByAge\07.OrderByAge.csproj", "{E8FB040E-E33B-4642-B7C8-D7A190C37094}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05_TeamworkProjectsV2", "05_TeamworkProjectsV2\05_TeamworkProjectsV2.csproj", "{429AAC63-11C1-452E-9198-3EF8288EBC58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.TeamworkProjectsV2", "05.TeamworkProjectsV2\05.TeamworkProjectsV2.csproj", "{429AAC63-11C1-452E-9198-3EF8288EBC58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
