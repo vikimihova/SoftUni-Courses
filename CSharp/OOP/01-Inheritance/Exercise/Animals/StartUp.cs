@@ -11,57 +11,36 @@ namespace Animals
 
             while ((animalType = Console.ReadLine()) != "Beast!")
             {
-                string[] animalInfo = Console.ReadLine().Split(" ").ToArray();
-
-                if(animalInfo.Length != 3)
-                {
-                    Console.WriteLine("Invalid input!");
-                    continue;
-                }
+                string[] animalInfo = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
                 string name = animalInfo[0];
-
-                int age;
-
-                if (int.TryParse(animalInfo[1], out age))
-                {
-                    age = int.Parse(animalInfo[1]);
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input!");
-                    continue;
-                }
-
+                int age = int.Parse(animalInfo[1]);
                 string gender = animalInfo[2];
 
+                Animal animal = null;
+
                 try
-                {
-                    if (animalType == "Dog")
+                {             
+                    switch (animalType)
                     {
-                        Dog dog = new Dog(name, age, gender);
-                        Console.WriteLine(dog.ToString());
+                        case "Dog":
+                            animal = new Dog(name, age, gender);
+                            break;
+                        case "Cat":
+                            animal = new Cat(name, age, gender);
+                            break;
+                        case "Frog":
+                            animal = new Frog(name, age, gender);
+                            break;
+                        case "Kitten":
+                            animal = new Kitten(name, age);
+                            break;
+                        case "Tomcat":
+                            animal = new Tomcat(name, age);
+                            break;
                     }
-                    else if (animalType == "Frog")
-                    {
-                        Frog frog = new Frog(name, age, gender);
-                        Console.WriteLine(frog.ToString());
-                    }
-                    else if (animalType == "Cat")
-                    {
-                        Cat cat = new Cat(name, age, gender);
-                        Console.WriteLine(cat.ToString());
-                    }
-                    else if (animalType == "Kitten")
-                    {
-                        Kitten kitten = new Kitten(name, age, gender);
-                        Console.WriteLine(kitten.ToString());
-                    }
-                    else if (animalType == "Tomcat")
-                    {
-                        Tomcat tomcat = new Tomcat(name, age, gender);
-                        Console.WriteLine(tomcat.ToString());
-                    }
+
+                    Console.WriteLine(animal.ToString());
                 }
                 catch (ArgumentException ex)
                 {
