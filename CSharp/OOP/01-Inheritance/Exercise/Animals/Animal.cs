@@ -25,7 +25,7 @@ namespace Animals
             }
             private set 
             {
-                if (string.IsNullOrWhiteSpace(value) || string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("Invalid input!");
                 }
@@ -41,7 +41,7 @@ namespace Animals
             }
             private set
             {
-                if (value < 0)
+                if (value <= 0)
                 {
                     throw new ArgumentException("Invalid input!");
                 }
@@ -57,7 +57,7 @@ namespace Animals
             }
             private set
             {
-                if (string.IsNullOrWhiteSpace(value) || string.IsNullOrEmpty(value) || (value != "Female" && value != "Male"))
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("Invalid input!");
                 }
@@ -66,10 +66,7 @@ namespace Animals
             }
         }
 
-        public virtual string ProduceSound()
-        {
-            return null;
-        }
+        public abstract string ProduceSound();
 
         public override string ToString()
         {
