@@ -1,0 +1,27 @@
+html {
+    font-family: Helvetica, sans-serif;
+    color: rgb(51, 51, 51);
+}
+
+body {
+    background-color: rgb(238, 238, 238);
+    padding: 40px;
+}
+
+
+article {
+    padding: 0;
+    max-width: 70%;
+    display: inline-block;
+}
+
+aside {    
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    position: absolute;
+}
+
+img {
+    width: 400px;
+}

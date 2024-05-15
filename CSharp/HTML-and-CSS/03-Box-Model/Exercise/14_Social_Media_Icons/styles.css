@@ -1,0 +1,27 @@
+html {
+    font-size: 16px;
+}
+
+ul {
+    font-style: none;
+}
+
+li {
+    display: inline-block;
+    box-sizing: border-box;  
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+    background-color: lightgray;
+    position: relative;
+    margin: 0.5em;
+}
+
+svg {
+    box-sizing: border-box;
+    padding: 0.1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+}

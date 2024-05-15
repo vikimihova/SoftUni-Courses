@@ -1,0 +1,74 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.viewport {
+    height: 100vh;    
+    overflow: hidden;
+    position: relative;
+}
+
+
+.viewport:nth-child(1) {
+    background-image: 
+          linear-gradient(
+            to right in oklab, 
+            rgb(0% 65% 100%) 36% 4%, rgb(12% 100% 56%) 91% 98%
+          );
+}
+
+.viewport:nth-child(2) {
+    background-image: 
+      linear-gradient(
+        91deg in oklab, 
+        oklch(60% .5 353) 0%, oklch(86% 0.18 40) 95% 95%
+      )
+    ;
+}
+
+.card {
+    max-width: 300px;
+    border-radius: 0.4em;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 2em 0 rgb(0, 0, 0, 0.5);
+}
+
+.card svg {
+    height: 1.5em;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    cursor: pointer;
+    fill: white;    
+    transition: fill 0.3s ease-in;
+}
+
+.card::before {
+    display: block;
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: 0 0 2em 3em rgb(0, 0, 0, 0.5) inset;
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+
+.card:hover::before {
+    opacity: 0;
+}
+
+.card svg:hover {
+    fill: rgb(231, 36, 95);
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
