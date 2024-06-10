@@ -1,16 +1,9 @@
 --12.Rich wizard, poor wizard
+--self-relation: w - wizard (current row), gw - guest wizard (next row)
 
-SELECT SUM(Difference) AS [SumDifference]
-  FROM (
-        SELECT wd.FirstName
-             , wd.LastName
-             , gw.FirstName AS [GuestFirstName]
-             , gw.LastName AS [GuestLastName]
-             , (wd.DepositAmount - gw.DepositAmount) AS [Difference]
-          FROM WizzardDeposits AS [wd]
-          LEFT JOIN WizzardDeposits AS [gw]
-            ON wd.Id + 1 = gw.Id
-       ) 
-    AS [WizardsSubquery]
+SELECT SUM(w.DepositAmount - gw.DepositAmount) AS [SumDifference]
+  FROM WizzardDeposits AS [w]
+  JOIN WizzardDeposits AS [gw]
+    ON w.Id + 1 = gw.Id
 
 
