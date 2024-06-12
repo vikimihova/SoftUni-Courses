@@ -1,5 +1,7 @@
 --19.Salary challenge
 
+--(1. Solution with a subquery in the WHERE clause)
+
 SELECT TOP(10) e.FirstName
              , e.LastName
              , e.DepartmentID
@@ -13,7 +15,7 @@ SELECT TOP(10) e.FirstName
        )
  ORDER BY e.DepartmentID
 
---Alternative solution
+--(2. Solution with a subquery in the JOIN clause)
 
 SELECT TOP(10) e.FirstName
              , e.LastName
@@ -29,6 +31,22 @@ SELECT TOP(10) e.FirstName
     ON e.DepartmentID = AverageSalaryPerDepartment.DepartmentID
  WHERE e.Salary > AverageSalaryPerDepartment.AverageSalary
  ORDER BY e.DepartmentID
+
+ --(3. Solution with a AVG() OVER (PARTITION BY))
+
+ SELECT TOP(10) FirstName
+              , LastName
+              , DepartmentID
+  FROM (
+            SELECT FirstName
+                 , LastName
+                 , DepartmentID
+                 , Salary
+                 , AVG(Salary) OVER (PARTITION BY DepartmentID) AS [AverageSalary]
+              FROM Employees
+       ) AS [SubqueryWithAverageSalary]
+ WHERE Salary > AverageSalary       
+ ORDER BY DepartmentID
 
 
 
