@@ -1,2 +1,2 @@
 --05.Truncate Table Minions
-TRUNCATE TABLE Minions
+TRUNCATE TABLE [Minions]

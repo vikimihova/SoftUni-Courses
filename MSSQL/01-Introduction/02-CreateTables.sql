@@ -1,13 +1,13 @@
 --02.Create Tables
-CREATE TABLE Minions
+CREATE TABLE [Minions]
 (
-	Id INT PRIMARY KEY,
-	[Name] VARCHAR(50),
-	Age INT
+	[Id] INT PRIMARY KEY
+  ,	[Name] VARCHAR(50)
+  ,	[Age] INT
 )
 
-CREATE TABLE Towns
+CREATE TABLE [Towns]
 (
-	Id INT PRIMARY KEY,
-	[Name] VARCHAR(50)
+	[Id] INT PRIMARY KEY
+  ,	[Name] VARCHAR(50)
 )

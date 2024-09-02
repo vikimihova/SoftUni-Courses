@@ -6,7 +6,7 @@ CREATE PROC usp_GetTownsStartingWith @NameBeginning NVARCHAR(10)
           DECLARE @FullName NVARCHAR(20)
               SET @FullName = @NameBeginning + '%'
            SELECT [Name] AS [Town]
-             FROM Towns
+             FROM [Towns]
             WHERE [Name] LIKE @FullName
         END
 

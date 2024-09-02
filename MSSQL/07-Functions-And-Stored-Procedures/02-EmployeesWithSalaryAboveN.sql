@@ -3,10 +3,10 @@
 CREATE PROC usp_GetEmployeesSalaryAboveNumber @Amount DECIMAL(18,4)
          AS
       BEGIN
-            SELECT FirstName AS [First Name]
-                 , LastName AS [Last Name]
-              FROM Employees
-             WHERE Salary >= @Amount
+            SELECT [FirstName] AS [First Name]
+                 , [LastName] AS [Last Name]
+              FROM [Employees]
+             WHERE [Salary] >= @Amount
         END
 
 GO

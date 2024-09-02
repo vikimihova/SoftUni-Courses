@@ -1,4 +1,6 @@
 --03.Find Salary of Each Employee
 
-SELECT [FirstName], [LastName], [Salary] 
+SELECT [FirstName]
+     , [LastName]
+     , [Salary] 
   FROM [Employees]

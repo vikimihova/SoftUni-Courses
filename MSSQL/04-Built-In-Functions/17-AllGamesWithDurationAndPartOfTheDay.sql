@@ -1,8 +1,7 @@
 --17.All games with duration and part of the day
 
-  SELECT [Name]
-	  AS [Game],
-	     CASE
+  SELECT [Name] AS [Game]
+       , CASE
 			WHEN DATEPART(HOUR, [Start]) >= 0 AND DATEPART(HOUR, [Start]) < 12 THEN 'Morning'
 			WHEN DATEPART(HOUR, [Start]) >= 12 AND DATEPART(HOUR, [Start]) < 18  THEN 'Afternoon'
 			WHEN DATEPART(HOUR, [Start]) >= 18  THEN 'Evening'
@@ -15,8 +14,7 @@
 		   	ELSE 'Extra Long'
 	     END 
 	  AS [Duration]
-    FROM [Games]
-      AS [g]
-ORDER BY [Name], 
-	     [Duration], 
-		 [Part of the Day]
+    FROM [Games] AS [g]
+   ORDER BY [Name]
+          , [Duration]
+          , [Part of the Day]

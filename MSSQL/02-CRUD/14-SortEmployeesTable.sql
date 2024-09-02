@@ -1,5 +1,8 @@
 --14.Sort employees table
 
-  SELECT *
-    FROM [Employees]
-ORDER BY [Salary] DESC, [FirstName] ASC, [LastName] DESC, [MiddleName] ASC
+SELECT *
+  FROM [Employees]
+ ORDER BY [Salary] DESC
+        , [FirstName] ASC
+        , [LastName] DESC
+        , [MiddleName] ASC

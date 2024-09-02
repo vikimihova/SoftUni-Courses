@@ -1,4 +1,4 @@
 --24.Delete All Records
-TRUNCATE TABLE Occupancies
+TRUNCATE TABLE [Occupancies]
 
-SELECT * FROM Occupancies
+SELECT * FROM [Occupancies]

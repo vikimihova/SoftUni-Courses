@@ -1,30 +1,30 @@
 --17.Highest peak and longest river by country
 
-select TOP (5) CountryName
-             , HighestPeakElevation
-             , LongestRiverLength
-      from
+SELECT TOP (5) [CountryName]
+             , [HighestPeakElevation]
+             , [LongestRiverLength]
+      FROM
           (
-             select c.CountryName
-                  , p.Elevation as [HighestPeakElevation]
-                  , r.[Length] as [LongestRiverLength]
-                  , dense_rank() over 
-                    (partition by c.CountryName
-                     order by p.Elevation desc 
-                            , r.[Length] desc) as [RowRank]
-               from Countries as [c]
-               left join CountriesRivers as [cr]
-                 on c.CountryCode = cr.CountryCode
-               left join Rivers as [r]
-                 on cr.RiverId = r.Id
-               left join MountainsCountries as [mc]
-                 on c.CountryCode = mc.CountryCode
-               left join Peaks as [p]
-                 on mc.MountainId = p.MountainId
+             SELECT [c].[CountryName]
+                  , [p].[Elevation] AS [HighestPeakElevation]
+                  , [r].[Length] AS [LongestRiverLength]
+                  , DENSE_RANK() OVER 
+                    (PARTITION BY [c].[CountryName]
+                     ORDER BY [p].[Elevation] DESC 
+                            , [r].[Length] DESC) AS [RowRank]
+               FROM [Countries] AS [c]
+               LEFT JOIN [CountriesRivers] AS [cr]
+                 ON [c].[CountryCode] = [cr].[CountryCode]
+               LEFT JOIN [Rivers] AS [r]
+                 ON [cr].[RiverId] = [r].[Id]
+               LEFT JOIN [MountainsCountries] AS [mc]
+                 ON [c].[CountryCode] = [mc].[CountryCode]
+               LEFT JOIN [Peaks] AS [p]
+                 ON [mc].[MountainId] = [p].[MountainId]
            ) 
-        as [AllCountriesMountainsRiversSubquery]
-     where RowRank = 1
-     order by HighestPeakElevation desc 
-         , LongestRiverLength desc
-         , CountryName
+        AS [AllCountriesMountainsRiversSubquery]
+     WHERE [RowRank] = 1
+     ORDER BY [HighestPeakElevation] DESC 
+            , [LongestRiverLength] DESC
+            , [CountryName]
 
