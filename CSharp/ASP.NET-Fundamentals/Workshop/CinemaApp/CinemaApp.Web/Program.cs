@@ -1,5 +1,6 @@
 using CinemaApp.Data;
 using Microsoft.EntityFrameworkCore;
+using static CinemaApp.Web.Infrastructure.Extensions.ExtensionMethods;
 
 namespace CinemaApp.Web
 {
@@ -40,6 +41,7 @@ namespace CinemaApp.Web
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            app.ApplyMigrations();
             app.Run();
         }
     }
