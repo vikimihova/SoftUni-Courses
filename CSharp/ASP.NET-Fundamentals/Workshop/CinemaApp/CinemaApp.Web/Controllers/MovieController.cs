@@ -3,6 +3,7 @@ using CinemaApp.Data.Models;
 using CinemaApp.Web.ViewModels.Movie;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
+using static CinemaApp.Common.EntityValidationConstants.MovieValidationConstants;
 
 namespace CinemaApp.Web.Controllers
 {
@@ -40,12 +41,13 @@ namespace CinemaApp.Web.Controllers
                 return this.View(inputModel);
             }
 
-            bool isReleaseDateValid = DateTime.TryParseExact(inputModel.ReleaseDate,
-                "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime releaseDate);
+            bool isReleaseDateValid = DateTime.TryParseExact(inputModel.ReleaseDate, DateViewFormat, 
+                CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime releaseDate);
 
             if (!isReleaseDateValid)
             {
-                this.ModelState.AddModelError(nameof(inputModel.ReleaseDate), "Release date must be in the following format:");
+                //ModelState automatically becomes invalid
+                this.ModelState.AddModelError(nameof(inputModel.ReleaseDate), String.Format("Release date must be in the following format: {0}", DateViewFormat));
                 return this.View(inputModel);
             }
 
