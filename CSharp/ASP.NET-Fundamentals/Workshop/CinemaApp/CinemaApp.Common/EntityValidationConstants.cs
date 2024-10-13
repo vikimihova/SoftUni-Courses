@@ -14,6 +14,15 @@ namespace CinemaApp.Common
             public const int GenreMaxLength = 20;
             public const int DirectorMaxLength = 80;
             public const int DescriptionMaxLength = 500;
+            public const string DateViewFormat = "MM/yyyy";
+        }
+
+        public static class CinemaValidationConstants
+        {
+            public const int NameMaxLength = 50;
+            public const int NameMinLength = 3;
+            public const int LocationMaxLength = 85;
+            public const int LocationMinLength = 3;
         }
     }
 }
