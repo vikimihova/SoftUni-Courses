@@ -6,7 +6,12 @@ namespace CinemaApp.Web.ViewModels.Movie
 {
     public class AddMovieInputModel
     {
-        [Required]
+        public AddMovieInputModel()
+        {
+            this.ReleaseDate = DateTime.UtcNow.ToString(DateViewFormat);
+        }
+
+        [Required(ErrorMessage = "Movie title is required.")]
         [MinLength(2)]
         [MaxLength(TitleMaxLength)]
         public string Title { get; set; }
