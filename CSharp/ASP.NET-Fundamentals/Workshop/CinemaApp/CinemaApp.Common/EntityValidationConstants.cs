@@ -15,6 +15,7 @@ namespace CinemaApp.Common
             public const int DirectorMaxLength = 80;
             public const int DescriptionMaxLength = 500;
             public const string DateViewFormat = "MM/yyyy";
+            public const int MaxImageUrlLength = 2083;
         }
 
         public static class CinemaValidationConstants

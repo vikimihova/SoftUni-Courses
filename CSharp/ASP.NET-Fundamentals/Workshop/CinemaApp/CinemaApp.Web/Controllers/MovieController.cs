@@ -61,6 +61,7 @@ namespace CinemaApp.Web.Controllers
                 Director = inputModel.Director,
                 Duration = inputModel.Duration,
                 Description = inputModel.Description,
+                ImageUrl = inputModel.ImageUrl,
             };
 
             this.dbContext.Movies.Add(movie);

@@ -33,5 +33,8 @@ namespace CinemaApp.Web.ViewModels.Movie
         [Required]
         [MaxLength(DescriptionMaxLength)]
         public string Description { get; set; }
+
+        [MaxLength(MaxImageUrlLength)]
+        public string? ImageUrl {  get; set; }
     }
 }

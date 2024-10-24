@@ -5,6 +5,7 @@
 
     using CinemaApp.Data.Models;
     using static CinemaApp.Common.EntityValidationConstants.MovieValidationConstants;
+    using static CinemaApp.Common.ApplicationConstants;
 
     public class MovieConfiguration : IEntityTypeConfiguration<Movie>
     {
@@ -27,6 +28,11 @@
             builder.Property(m => m.Description)
                 .IsRequired()
                 .HasMaxLength(DescriptionMaxLength);
+
+            builder.Property(m => m.ImageUrl)
+                .IsRequired(false)
+                .HasMaxLength(MaxImageUrlLength)
+                .HasDefaultValue(NoImageUrl);
 
             builder.HasData(this.SeedMovies());
         }

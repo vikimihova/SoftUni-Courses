@@ -4,6 +4,7 @@ using CinemaApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaApp.Data.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    partial class CinemaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241017140528_AddMovieImageUrl")]
+    partial class AddMovieImageUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,19 +129,19 @@ namespace CinemaApp.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d441fe86-2759-45f8-9977-56dbabc338f0"),
+                            Id = new Guid("dc260d19-7f0d-44c8-95c9-1ab4f2245b3c"),
                             Location = "Sofia",
                             Name = "Cinema City"
                         },
                         new
                         {
-                            Id = new Guid("65e0e6d4-677a-4427-b7a4-5d2742139fd2"),
+                            Id = new Guid("b77ed17b-dc87-4ce0-89d6-978b777b3f4c"),
                             Location = "Varna",
                             Name = "Cinema City"
                         },
                         new
                         {
-                            Id = new Guid("e51ec83f-06e1-4dab-ad5e-fda60a6fdf07"),
+                            Id = new Guid("3193081e-e633-4aee-885e-743814af0b92"),
                             Location = "Plovdiv",
                             Name = "Cinema City"
                         });
@@ -187,7 +190,7 @@ namespace CinemaApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(2083)
                         .HasColumnType("nvarchar(2083)")
-                        .HasDefaultValue("/images/no-image.png");
+                        .HasDefaultValue("~/images/no-image.png");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
@@ -204,7 +207,7 @@ namespace CinemaApp.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("da87e59c-fdb0-47c1-8d93-d1133c50a54e"),
+                            Id = new Guid("8dd08a05-0b0e-4527-b774-d08234da9bb1"),
                             Description = "Harry Potter, Ron and Hermione return to Hogwarts School of Witchcraft and Wizardry for their third year of study, where they delve into the mystery surrounding an escaped prisoner who poses a dangerous threat to the young wizard.",
                             Director = "Alfonso Cuarón",
                             Duration = 120,
@@ -214,7 +217,7 @@ namespace CinemaApp.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("497383fc-f435-4f46-881d-29e982a641f6"),
+                            Id = new Guid("020ede14-cf78-4757-af03-4c8aa0186035"),
                             Description = "Three actors accept an invitation to a Mexican village to perform their onscreen bandit fighter roles, unaware that it is the real thing.",
                             Director = "John Landis",
                             Duration = 110,
@@ -224,7 +227,7 @@ namespace CinemaApp.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c2568acc-b57c-42a7-aa27-edad17ebe44c"),
+                            Id = new Guid("9e2ffc51-3804-4639-95ce-9daba2d6e222"),
                             Description = "After investigating a mysterious transmission of unknown origin, the crew of a commercial spacecraft encounters a deadly lifeform.",
                             Director = "Ridley Scott",
                             Duration = 105,
