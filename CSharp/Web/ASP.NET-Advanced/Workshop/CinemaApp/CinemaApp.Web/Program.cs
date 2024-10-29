@@ -1,5 +1,7 @@
 using CinemaApp.Data;
 using CinemaApp.Data.Models;
+using CinemaApp.Services.Mapping;
+using CinemaApp.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using static CinemaApp.Web.Infrastructure.Extensions.ExtensionMethods;
@@ -50,6 +52,8 @@ namespace CinemaApp.Web
 
 
             var app = builder.Build();
+
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).Assembly); // gets the assembly of the view models, using the ErrorViewModel as a starting point
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
