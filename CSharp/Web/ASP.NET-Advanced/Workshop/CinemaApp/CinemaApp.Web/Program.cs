@@ -17,12 +17,16 @@ namespace CinemaApp.Web
             var builder = WebApplication.CreateBuilder(args);
             string connectionString = builder.Configuration.GetConnectionString("SqlServer");
 
-            // Add services to the container.
+            // ADD SERVICES TO THE CONTAINER
+
+            // Add dbContext
             builder.Services.AddDbContext<CinemaDbContext>(options =>
             {
                 options.UseSqlServer(connectionString);
-            }); //Nuget Microsoft Extensions Dependecy Injection package
+            }); //NuGet Microsoft Extensions Dependency Injection package
 
+
+            // Add identity
             builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(options =>
             {
                 options.Password.RequireDigit = builder.Configuration.GetValue<bool>("Identity:Password:RequireDigits");
@@ -43,11 +47,12 @@ namespace CinemaApp.Web
             .AddSignInManager<SignInManager<ApplicationUser>>()
             .AddUserManager<UserManager<ApplicationUser>>();
 
+
+            // Configure application cookie
             builder.Services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/Identity/Account/Login";
             });
-            
 
             // Add repositories for each entity (repository pattern) except for ApplicationUser (UserManager and SignInManager instead)
             builder.Services.AddScoped<IRepository<Movie, Guid>, Repository<Movie, Guid>>();
@@ -60,11 +65,16 @@ namespace CinemaApp.Web
             builder.Services.AddRazorPages();
 
 
+            // BUILD APPLICATION
             var app = builder.Build();
 
+
+            // ADD AUTOMAPPER
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).Assembly); // gets the assembly of the view models, using the ErrorViewModel as a starting point
 
-            // Configure the HTTP request pipeline.
+
+            // CONFIGURE THE HTTP REQUEST PIPELINE
+
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
@@ -74,7 +84,6 @@ namespace CinemaApp.Web
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
 
             app.UseAuthentication();
@@ -86,7 +95,11 @@ namespace CinemaApp.Web
 
             app.MapRazorPages();
 
+            // APPLY MIGRATIONS
             app.ApplyMigrations();
+
+
+            // RUN APPLICATION
             app.Run();
         }
     }
