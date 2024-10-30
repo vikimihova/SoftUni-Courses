@@ -19,11 +19,11 @@ namespace CinemaApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            IEnumerable<Movie> allMovies = this.dbContext
+            IEnumerable<Movie> allMovies = await this.dbContext
                 .Movies
-                .ToList();
+                .ToListAsync();
 
             return View(allMovies);
         }
@@ -35,7 +35,7 @@ namespace CinemaApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(AddMovieInputModel inputModel)
+        public async Task<IActionResult> Create(AddMovieInputModel inputModel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -64,14 +64,14 @@ namespace CinemaApp.Web.Controllers
                 ImageUrl = inputModel.ImageUrl,
             };
 
-            this.dbContext.Movies.Add(movie);
-            this.dbContext.SaveChanges();
+            await this.dbContext.Movies.AddAsync(movie);
+            await this.dbContext.SaveChangesAsync();
 
             return this.RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
-        public IActionResult Details(string Id)
+        public async Task<IActionResult> Details(string Id)
         {
             bool isIdValid = Guid.TryParse(Id, out Guid id);
 
@@ -80,7 +80,7 @@ namespace CinemaApp.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            Movie? movie = this.dbContext.Movies.FirstOrDefault(x => x.Id == id);
+            Movie? movie = await this.dbContext.Movies.FirstOrDefaultAsync(x => x.Id == id);
 
             if (movie == null)
             {
@@ -91,9 +91,9 @@ namespace CinemaApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddToProgram(string id)
+        public async Task<IActionResult> AddToProgram(string id)
         {
-            Movie movie = this.dbContext.Movies.FirstOrDefault(m => m.Id.ToString() == id);
+            Movie? movie = await this.dbContext.Movies.FirstOrDefaultAsync(m => m.Id.ToString() == id);
 
             if (movie == null)
             {
@@ -124,14 +124,14 @@ namespace CinemaApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddToProgram(AddMovieToCinemaViewModel model) 
+        public async Task<IActionResult> AddToProgram(AddMovieToCinemaViewModel model) 
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            Movie? movie = dbContext.Movies.FirstOrDefault(m => m.Id.ToString() == model.MovieId);
+            Movie? movie = await dbContext.Movies.FirstOrDefaultAsync(m => m.Id.ToString() == model.MovieId);
 
             if (movie == null)
             {
@@ -143,7 +143,7 @@ namespace CinemaApp.Web.Controllers
             
             foreach (var cinemaCheckboxInputModel in model.Cinemas)
             {
-                Cinema? cinema = dbContext.Cinemas.FirstOrDefault(c => c.Id.ToString() == cinemaCheckboxInputModel.Id);
+                Cinema? cinema = await dbContext.Cinemas.FirstOrDefaultAsync(c => c.Id.ToString() == cinemaCheckboxInputModel.Id);
 
                 if (cinema == null || 
                     cinemaCheckboxInputModel.IsSelected == false ||
@@ -159,8 +159,8 @@ namespace CinemaApp.Web.Controllers
                 });
             }
 
-            dbContext.CinemasMovies.AddRange(entitiesToAdd);
-            dbContext.SaveChanges();
+            await dbContext.CinemasMovies.AddRangeAsync(entitiesToAdd);
+            await dbContext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }

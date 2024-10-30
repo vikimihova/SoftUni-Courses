@@ -17,7 +17,7 @@ namespace CinemaApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             IEnumerable<CinemaIndexViewModel> cinemas = this.dbContext.Cinemas
                 .Select(c => new CinemaIndexViewModel()
@@ -38,7 +38,7 @@ namespace CinemaApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CinemaCreateFormModel model)
+        public async Task<IActionResult> Create(CinemaCreateFormModel model)
         {
             if (!ModelState.IsValid) 
             {
@@ -51,14 +51,14 @@ namespace CinemaApp.Web.Controllers
                 Location = model.Location,
             };
 
-            this.dbContext.Cinemas.Add(newCinema);
-            this.dbContext.SaveChanges();
+            await this.dbContext.Cinemas.AddAsync(newCinema);
+            await this.dbContext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
-        public IActionResult Details(string id)
+        public async Task<IActionResult> Details(string id)
         {            
             //if (String.IsNullOrWhiteSpace(id))
             //{
@@ -72,7 +72,7 @@ namespace CinemaApp.Web.Controllers
             //    return RedirectToAction(nameof(Index));
             //}
 
-            Cinema cinema = dbContext.Cinemas.FirstOrDefault(c => c.Id.ToString() == id);
+            Cinema cinema = await dbContext.Cinemas.FirstOrDefaultAsync(c => c.Id.ToString() == id);
 
             if (cinema == null)
             {

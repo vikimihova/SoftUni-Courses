@@ -21,12 +21,12 @@ namespace CinemaApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             string userId = this.userManager.GetUserId(User);
 
             
-            IEnumerable<WatchlistViewModel> model = dbContext.ApplicationUsersMovies
+            IEnumerable<WatchlistViewModel> model = await dbContext.ApplicationUsersMovies
                 .Include(aum => aum.Movie)
                 .Where(aum => aum.ApplicationUserId.ToString() == userId)
                 .Select(aum => new WatchlistViewModel
@@ -37,16 +37,16 @@ namespace CinemaApp.Web.Controllers
                     ReleaseDate = aum.Movie.ReleaseDate.ToString(),
                     ImageUrl = aum.Movie.ImageUrl,
                 })
-                .ToList();
+                .ToListAsync();
 
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult AddToWatchlist(string movieId)
+        public async Task<IActionResult> AddToWatchlist(string movieId)
         {
-            Movie? movie = this.dbContext.Movies
-                .FirstOrDefault(m => m.Id.ToString() == movieId);
+            Movie? movie = await this.dbContext.Movies
+                .FirstOrDefaultAsync(m => m.Id.ToString() == movieId);
 
             if (movie == null)
             {
@@ -67,24 +67,24 @@ namespace CinemaApp.Web.Controllers
                     ApplicationUserId = Guid.Parse(userId),
                 };
 
-                dbContext.ApplicationUsersMovies.Add(userMovie);
-                dbContext.SaveChanges();
+                await dbContext.ApplicationUsersMovies.AddAsync(userMovie);
+                await dbContext.SaveChangesAsync();
             }
 
             return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public IActionResult RemoveFromWatchlist(string movieId)
+        public async Task<IActionResult> RemoveFromWatchlist(string movieId)
         {
             string userId = this.userManager.GetUserId(this.User)!;
 
-            var userMovie = dbContext.ApplicationUsersMovies.
-                FirstOrDefault(aum => aum.MovieId.ToString() == movieId &&
-                aum.ApplicationUserId.ToString() == userId);
+            var userMovie = await dbContext.ApplicationUsersMovies.
+                FirstOrDefaultAsync(aum => aum.MovieId.ToString() == movieId &&
+                    aum.ApplicationUserId.ToString() == userId);
 
             dbContext.ApplicationUsersMovies.Remove(userMovie);
-            dbContext.SaveChanges();
+            dbContext.SaveChangesAsync();
 
             return RedirectToAction("Index");
         }
