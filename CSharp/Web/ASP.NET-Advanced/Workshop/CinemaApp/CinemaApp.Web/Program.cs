@@ -1,5 +1,7 @@
 using CinemaApp.Data;
 using CinemaApp.Data.Models;
+using CinemaApp.Data.Repository;
+using CinemaApp.Data.Repository.Interfaces;
 using CinemaApp.Services.Mapping;
 using CinemaApp.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -47,6 +49,13 @@ namespace CinemaApp.Web
             });
             
 
+            // Add repositories for each entity (repository pattern) except for ApplicationUser (UserManager and SignInManager instead)
+            builder.Services.AddScoped<IRepository<Movie, Guid>, Repository<Movie, Guid>>();
+            builder.Services.AddScoped<IRepository<Cinema, Guid>, Repository<Cinema, Guid>>();
+            builder.Services.AddScoped<IRepository<CinemaMovie, object>, Repository<CinemaMovie, object>>();
+            builder.Services.AddScoped<IRepository<ApplicationUserMovie, object>, Repository<ApplicationUserMovie, object>>();
+            
+            // Add other services
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
 
