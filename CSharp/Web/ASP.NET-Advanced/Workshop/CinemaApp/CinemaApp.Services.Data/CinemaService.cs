@@ -32,7 +32,11 @@ namespace CinemaApp.Services.Data
         // get cinema details
         public async Task<CinemaDetailsViewModel?> GetCinemaDetailsByIdAsync(Guid id)
         {
-            Cinema cinema = await this.cinemaRepository.GetByIdAsync(id);
+            Cinema? cinema = await this.cinemaRepository
+                .GetAllAttached()
+                .Include(c => c.CinemaMovies)
+                .ThenInclude(cm => cm.Movie)
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             CinemaDetailsViewModel? model = null;
 
