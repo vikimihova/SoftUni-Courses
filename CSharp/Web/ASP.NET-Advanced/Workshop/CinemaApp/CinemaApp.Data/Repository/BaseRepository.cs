@@ -72,7 +72,7 @@ namespace CinemaApp.Data.Repository
             return await this.dbSet.ToArrayAsync();
         }
 
-        public IEnumerable<TType> GetAllAttached() // still attached to the database
+        public IQueryable<TType> GetAllAttached() // still attached to the database
         {
             return this.dbSet.AsQueryable();
         }

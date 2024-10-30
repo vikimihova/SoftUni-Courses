@@ -9,7 +9,7 @@
         IEnumerable<TType> GetAll(); // synchronous
         Task<IEnumerable<TType>> GetAllAsync(); // asynchronous ...
 
-        IEnumerable<TType> GetAllAttached(); // only synchronous
+        IQueryable<TType> GetAllAttached(); // only synchronous
 
         void Add(TType item);
         Task AddAsync(TType item);
