@@ -1,10 +1,9 @@
-﻿namespace CinemaApp.Services.Mapping
+﻿using AutoMapper;
+
+namespace CinemaApp.Services.Mapping
 {
     public interface IHaveCustomMappings
     {
-        public void CreateMappings()
-        {
-
-        }
+        void CreateMappings(IProfileExpression configuration);
     }
 }
