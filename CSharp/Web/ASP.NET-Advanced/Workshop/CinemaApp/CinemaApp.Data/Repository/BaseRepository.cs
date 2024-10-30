@@ -1,5 +1,6 @@
 ﻿using CinemaApp.Data.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace CinemaApp.Data.Repository
 {
@@ -119,6 +120,36 @@ namespace CinemaApp.Data.Repository
             {
                 return false;
             }
-        }        
+        }
+
+        // Add range
+        public void AddRange(TType[] items)
+        {
+            this.dbSet.AddRange(items);
+            this.context.SaveChanges();
+        }
+
+        public async Task AddRangeAsync(TType[] items)
+        {
+            await this.dbSet.AddRangeAsync(items);
+            await this.context.SaveChangesAsync();
+        }
+
+        // Get first or default
+        public TType FirstOrDefault(Func<TType, bool> predicate)
+        {
+            TType? entity = this.dbSet
+                .FirstOrDefault(predicate);
+
+            return entity;
+        }
+
+        public async Task<TType> FirstOrDefaultAsync(Expression<Func<TType, bool>> predicate)
+        {
+            TType? entity = await this.dbSet
+                .FirstOrDefaultAsync(predicate);
+
+            return entity;
+        }
     }
 }

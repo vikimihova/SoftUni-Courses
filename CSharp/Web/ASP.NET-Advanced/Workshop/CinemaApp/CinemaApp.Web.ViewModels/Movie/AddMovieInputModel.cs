@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AutoMapper;
+using CinemaApp.Services.Mapping;
+using System.ComponentModel.DataAnnotations;
 
 using static CinemaApp.Common.EntityValidationConstants.MovieValidationConstants;
 
 namespace CinemaApp.Web.ViewModels.Movie
 {
-    public class AddMovieInputModel
+    public class AddMovieInputModel : IMapTo<Data.Models.Movie>, IHaveCustomMappings
     {
         public AddMovieInputModel()
         {
@@ -36,5 +38,11 @@ namespace CinemaApp.Web.ViewModels.Movie
 
         [MaxLength(MaxImageUrlLength)]
         public string? ImageUrl {  get; set; }
+
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<AddMovieInputModel, Data.Models.Movie>()
+                .ForMember(d => d.ReleaseDate, x => x.Ignore());
+        }
     }
 }
