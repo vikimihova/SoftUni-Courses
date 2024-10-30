@@ -2,6 +2,8 @@ using CinemaApp.Data;
 using CinemaApp.Data.Models;
 using CinemaApp.Data.Repository;
 using CinemaApp.Data.Repository.Interfaces;
+using CinemaApp.Services.Data;
+using CinemaApp.Services.Data.Interfaces;
 using CinemaApp.Services.Mapping;
 using CinemaApp.Web.Infrastructure.Extensions;
 using CinemaApp.Web.ViewModels;
@@ -63,6 +65,9 @@ namespace CinemaApp.Web
             //builder.Services.AddScoped<IRepository<CinemaMovie, object>, BaseRepository<CinemaMovie, object>>();
             //builder.Services.AddScoped<IRepository<ApplicationUserMovie, object>, BaseRepository<ApplicationUserMovie, object>>();
             builder.Services.RegisterRepositories(typeof(ApplicationUser).Assembly);
+
+            // Add services for controllers
+            builder.Services.AddScoped<ICinemaService, CinemaService>();
 
             // Add other services
             builder.Services.AddControllersWithViews();

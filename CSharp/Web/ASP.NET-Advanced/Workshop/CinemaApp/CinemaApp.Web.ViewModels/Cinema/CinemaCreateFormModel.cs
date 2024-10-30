@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CinemaApp.Services.Mapping;
+using System.ComponentModel.DataAnnotations;
 using static CinemaApp.Common.EntityValidationConstants.CinemaValidationConstants;
 
 
 namespace CinemaApp.Web.ViewModels.Cinema
 {
-    public class CinemaCreateFormModel
+    public class CinemaCreateFormModel : IMapTo<Data.Models.Cinema>
     {
         [Required]
         [MinLength(NameMinLength)]
