@@ -1,8 +1,5 @@
 using CinemaApp.Data;
 using CinemaApp.Data.Models;
-using CinemaApp.Data.Repository;
-using CinemaApp.Data.Repository.Interfaces;
-using CinemaApp.Services.Data;
 using CinemaApp.Services.Data.Interfaces;
 using CinemaApp.Services.Mapping;
 using CinemaApp.Web.Infrastructure.Extensions;
