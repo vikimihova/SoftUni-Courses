@@ -31,8 +31,8 @@ namespace CinemaApp.Data.Repository.Interfaces
 
 
         // Delete
-        bool Delete(TId id);
-        Task<bool> DeleteAsync(TId id);
+        bool Delete(TType item);
+        Task<bool> DeleteAsync(TType item);
 
 
         // Update

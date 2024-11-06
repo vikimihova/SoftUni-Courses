@@ -32,10 +32,8 @@ namespace CinemaApp.Data.Repository
         }
 
         // Delete
-        public bool Delete(TId id)
+        public bool Delete(TType item)
         {
-            TType item = this.GetById(id);
-
             if (item == null)
             {
                 return false;
@@ -47,10 +45,8 @@ namespace CinemaApp.Data.Repository
             return true;
         }
 
-        public async Task<bool> DeleteAsync(TId id)
+        public async Task<bool> DeleteAsync(TType item)
         {
-            TType item = await this.GetByIdAsync(id);
-
             if (item == null)
             {
                 return false;
