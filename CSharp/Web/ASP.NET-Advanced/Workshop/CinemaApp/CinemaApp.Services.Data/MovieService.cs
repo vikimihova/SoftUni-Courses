@@ -140,7 +140,7 @@ namespace CinemaApp.Services.Data
         {
             Movie? movie = await this.movieRepository
                 .GetByIdAsync(id);
-            MovieDetailsViewModel? viewModel = null;
+            MovieDetailsViewModel? viewModel = new MovieDetailsViewModel(); // viewModel cannot be null, if it's a destination in automapper
             if (movie != null)
             {
                 AutoMapperConfig.MapperInstance.Map(movie, viewModel);
