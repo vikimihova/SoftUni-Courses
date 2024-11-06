@@ -1,11 +1,9 @@
-﻿using CinemaApp.Data;
-using CinemaApp.Data.Models;
+﻿using CinemaApp.Data.Models;
 using CinemaApp.Services.Data.Interfaces;
 using CinemaApp.Web.ViewModels.Watchlist;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 using static CinemaApp.Common.ErrorMessages.Watchlist;
 
@@ -15,14 +13,11 @@ namespace CinemaApp.Web.Controllers
     public class WatchlistController : Controller
     {
         private readonly IWatchlistService watchlistService;
-
-        private readonly CinemaDbContext dbContext;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public WatchlistController(IWatchlistService watchlistService, CinemaDbContext dbContext, UserManager<ApplicationUser> userManager)
+        public WatchlistController(IWatchlistService watchlistService, UserManager<ApplicationUser> userManager)
         {
             this.watchlistService = watchlistService;
-            this.dbContext = dbContext;
             this.userManager = userManager;
         }
 
