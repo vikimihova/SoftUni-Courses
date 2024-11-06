@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CinemaApp.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class AddIdentity : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -75,7 +75,8 @@ namespace CinemaApp.Data.Migrations
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Director = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
                     Duration = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(2083)", maxLength: 2083, nullable: true, defaultValue: "/images/no-image.png")
                 },
                 constraints: table =>
                 {
@@ -128,8 +129,8 @@ namespace CinemaApp.Data.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -173,8 +174,8 @@ namespace CinemaApp.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -186,6 +187,30 @@ namespace CinemaApp.Data.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ApplicationUsersMovies",
+                columns: table => new
+                {
+                    ApplicationUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApplicationUsersMovies", x => new { x.ApplicationUserId, x.MovieId });
+                    table.ForeignKey(
+                        name: "FK_ApplicationUsersMovies_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ApplicationUsersMovies_Movies_MovieId",
+                        column: x => x.MovieId,
+                        principalTable: "Movies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -212,14 +237,47 @@ namespace CinemaApp.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Tickets",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CinemaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tickets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tickets_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tickets_Cinemas_CinemaId",
+                        column: x => x.CinemaId,
+                        principalTable: "Cinemas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tickets_Movies_MovieId",
+                        column: x => x.MovieId,
+                        principalTable: "Movies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Cinemas",
                 columns: new[] { "Id", "Location", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("106a8beb-dd68-4695-9653-1b1ef8a09f5b"), "Varna", "Cinema City" },
-                    { new Guid("15c24d31-4014-47af-8e03-f01fda352876"), "Sofia", "Cinema City" },
-                    { new Guid("8219006f-7a66-4fee-96bb-b86737fe3247"), "Plovdiv", "Cinema City" }
+                    { new Guid("6a45d990-3ca1-4ab7-97c1-60077cd598bb"), "Plovdiv", "Cinema City" },
+                    { new Guid("b76389d0-6c2a-42da-aece-c42e4afa7ed2"), "Sofia", "Cinema City" },
+                    { new Guid("f413bdb4-4dd8-4918-a65e-8d6d7d0ff108"), "Varna", "Cinema City" }
                 });
 
             migrationBuilder.InsertData(
@@ -227,10 +285,15 @@ namespace CinemaApp.Data.Migrations
                 columns: new[] { "Id", "Description", "Director", "Duration", "Genre", "ReleaseDate", "Title" },
                 values: new object[,]
                 {
-                    { new Guid("014b2d42-8385-4f47-9f2f-65bc310d0ebf"), "After investigating a mysterious transmission of unknown origin, the crew of a commercial spacecraft encounters a deadly lifeform.", "Ridley Scott", 105, "Horror", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Alien" },
-                    { new Guid("5d30166d-1bd8-4d02-b6a6-f9b1efee9e05"), "Harry Potter, Ron and Hermione return to Hogwarts School of Witchcraft and Wizardry for their third year of study, where they delve into the mystery surrounding an escaped prisoner who poses a dangerous threat to the young wizard.", "Alfonso Cuarón", 120, "Fantasy", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Harry Potter and the Prisoner of Azkaban" },
-                    { new Guid("80c0bba6-561b-4788-914a-006a4988e95a"), "Three actors accept an invitation to a Mexican village to perform their onscreen bandit fighter roles, unaware that it is the real thing.", "John Landis", 110, "Comedy", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Three Amigos!" }
+                    { new Guid("22c7b2fd-644e-4385-92da-3e8c3921e763"), "After investigating a mysterious transmission of unknown origin, the crew of a commercial spacecraft encounters a deadly lifeform.", "Ridley Scott", 105, "Horror", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Alien" },
+                    { new Guid("26483124-5a16-4749-bfcb-aafc98ae0204"), "Three actors accept an invitation to a Mexican village to perform their onscreen bandit fighter roles, unaware that it is the real thing.", "John Landis", 110, "Comedy", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Three Amigos!" },
+                    { new Guid("e9b71883-aeee-4dc7-9af7-b60f377ec234"), "Harry Potter, Ron and Hermione return to Hogwarts School of Witchcraft and Wizardry for their third year of study, where they delve into the mystery surrounding an escaped prisoner who poses a dangerous threat to the young wizard.", "Alfonso Cuarón", 120, "Fantasy", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Harry Potter and the Prisoner of Azkaban" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ApplicationUsersMovies_MovieId",
+                table: "ApplicationUsersMovies",
+                column: "MovieId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -275,11 +338,29 @@ namespace CinemaApp.Data.Migrations
                 name: "IX_CinemasMovies_CinemaId",
                 table: "CinemasMovies",
                 column: "CinemaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tickets_CinemaId",
+                table: "Tickets",
+                column: "CinemaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tickets_MovieId",
+                table: "Tickets",
+                column: "MovieId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tickets_UserId",
+                table: "Tickets",
+                column: "UserId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ApplicationUsersMovies");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -297,6 +378,9 @@ namespace CinemaApp.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "CinemasMovies");
+
+            migrationBuilder.DropTable(
+                name: "Tickets");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

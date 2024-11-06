@@ -24,10 +24,12 @@ namespace CinemaApp.Data
 
         public virtual DbSet<ApplicationUserMovie> ApplicationUsersMovies { get; set; }
 
+        public virtual DbSet<Ticket> Tickets { get; set; }
+                
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(modelBuilder); // pass the modelBuilder to the base constructor of IdentityDbContext
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); // apply entity type configurations
         }
     }
 }

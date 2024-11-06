@@ -10,5 +10,7 @@ namespace CinemaApp.Data.Models
         }
 
         public virtual ICollection<ApplicationUserMovie> UserMovies { get; set; } = new HashSet<ApplicationUserMovie>();
+
+        public virtual ICollection<Ticket> Tickets { get; set; } = new HashSet<Ticket>();
     }
 }

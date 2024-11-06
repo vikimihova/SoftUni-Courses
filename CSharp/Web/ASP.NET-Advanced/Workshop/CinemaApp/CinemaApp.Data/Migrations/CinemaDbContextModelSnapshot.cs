@@ -126,19 +126,19 @@ namespace CinemaApp.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d441fe86-2759-45f8-9977-56dbabc338f0"),
+                            Id = new Guid("b76389d0-6c2a-42da-aece-c42e4afa7ed2"),
                             Location = "Sofia",
                             Name = "Cinema City"
                         },
                         new
                         {
-                            Id = new Guid("65e0e6d4-677a-4427-b7a4-5d2742139fd2"),
+                            Id = new Guid("f413bdb4-4dd8-4918-a65e-8d6d7d0ff108"),
                             Location = "Varna",
                             Name = "Cinema City"
                         },
                         new
                         {
-                            Id = new Guid("e51ec83f-06e1-4dab-ad5e-fda60a6fdf07"),
+                            Id = new Guid("6a45d990-3ca1-4ab7-97c1-60077cd598bb"),
                             Location = "Plovdiv",
                             Name = "Cinema City"
                         });
@@ -204,7 +204,7 @@ namespace CinemaApp.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("da87e59c-fdb0-47c1-8d93-d1133c50a54e"),
+                            Id = new Guid("e9b71883-aeee-4dc7-9af7-b60f377ec234"),
                             Description = "Harry Potter, Ron and Hermione return to Hogwarts School of Witchcraft and Wizardry for their third year of study, where they delve into the mystery surrounding an escaped prisoner who poses a dangerous threat to the young wizard.",
                             Director = "Alfonso Cuarón",
                             Duration = 120,
@@ -214,7 +214,7 @@ namespace CinemaApp.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("497383fc-f435-4f46-881d-29e982a641f6"),
+                            Id = new Guid("26483124-5a16-4749-bfcb-aafc98ae0204"),
                             Description = "Three actors accept an invitation to a Mexican village to perform their onscreen bandit fighter roles, unaware that it is the real thing.",
                             Director = "John Landis",
                             Duration = 110,
@@ -224,7 +224,7 @@ namespace CinemaApp.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c2568acc-b57c-42a7-aa27-edad17ebe44c"),
+                            Id = new Guid("22c7b2fd-644e-4385-92da-3e8c3921e763"),
                             Description = "After investigating a mysterious transmission of unknown origin, the crew of a commercial spacecraft encounters a deadly lifeform.",
                             Director = "Ridley Scott",
                             Duration = 105,
@@ -232,6 +232,35 @@ namespace CinemaApp.Data.Migrations
                             ReleaseDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Alien"
                         });
+                });
+
+            modelBuilder.Entity("CinemaApp.Data.Models.Ticket", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CinemaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MovieId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CinemaId");
+
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Tickets");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -403,6 +432,33 @@ namespace CinemaApp.Data.Migrations
                     b.Navigation("Movie");
                 });
 
+            modelBuilder.Entity("CinemaApp.Data.Models.Ticket", b =>
+                {
+                    b.HasOne("CinemaApp.Data.Models.Cinema", "Cinema")
+                        .WithMany("Tickets")
+                        .HasForeignKey("CinemaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CinemaApp.Data.Models.Movie", "Movie")
+                        .WithMany("Tickets")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CinemaApp.Data.Models.ApplicationUser", "User")
+                        .WithMany("Tickets")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cinema");
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
@@ -456,12 +512,16 @@ namespace CinemaApp.Data.Migrations
 
             modelBuilder.Entity("CinemaApp.Data.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("Tickets");
+
                     b.Navigation("UserMovies");
                 });
 
             modelBuilder.Entity("CinemaApp.Data.Models.Cinema", b =>
                 {
                     b.Navigation("CinemaMovies");
+
+                    b.Navigation("Tickets");
                 });
 
             modelBuilder.Entity("CinemaApp.Data.Models.Movie", b =>
@@ -469,6 +529,8 @@ namespace CinemaApp.Data.Migrations
                     b.Navigation("MovieCinemas");
 
                     b.Navigation("MovieUsers");
+
+                    b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618
         }

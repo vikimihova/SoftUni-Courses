@@ -21,5 +21,7 @@
         public virtual ICollection<CinemaMovie> MovieCinemas { get; set; } = new HashSet<CinemaMovie>();
 
         public virtual ICollection<ApplicationUserMovie> MovieUsers { get; set; } = new HashSet<ApplicationUserMovie>();
+
+        public virtual ICollection<Ticket> Tickets { get; set; } = new HashSet<Ticket>();
     }
 }
