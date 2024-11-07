@@ -4,6 +4,7 @@ using CinemaApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaApp.Data.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    partial class CinemaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241107194119_AddManager")]
+    partial class AddManager
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,19 +129,19 @@ namespace CinemaApp.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e2b56978-a160-479a-b835-cf7acdabaf4f"),
+                            Id = new Guid("4b16989a-db4c-4774-b67c-0ace4245e64c"),
                             Location = "Sofia",
                             Name = "Cinema City"
                         },
                         new
                         {
-                            Id = new Guid("5a232af7-2065-4c98-8ce3-1e16cf9e4c39"),
+                            Id = new Guid("0089d521-a0d5-4e83-a7cf-391ae0fe6c5e"),
                             Location = "Varna",
                             Name = "Cinema City"
                         },
                         new
                         {
-                            Id = new Guid("efcbe403-741a-4d53-bc3b-9da0a7b30be0"),
+                            Id = new Guid("aa80542d-43a8-4f16-9c40-01dde2a6724c"),
                             Location = "Plovdiv",
                             Name = "Cinema City"
                         });
@@ -178,7 +181,7 @@ namespace CinemaApp.Data.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Managers");
+                    b.ToTable("Manager");
                 });
 
             modelBuilder.Entity("CinemaApp.Data.Models.Movie", b =>
@@ -226,7 +229,7 @@ namespace CinemaApp.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9f9d191c-78ee-4fc9-bd5c-98a9d8f026ee"),
+                            Id = new Guid("c0cdb1ac-15c0-40a3-a7bb-b882918d441c"),
                             Description = "Harry Potter, Ron and Hermione return to Hogwarts School of Witchcraft and Wizardry for their third year of study, where they delve into the mystery surrounding an escaped prisoner who poses a dangerous threat to the young wizard.",
                             Director = "Alfonso Cuarón",
                             Duration = 120,
@@ -236,7 +239,7 @@ namespace CinemaApp.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e532c8af-18b1-4b86-a129-b0f3868141f5"),
+                            Id = new Guid("d9553254-c142-4771-8484-dd2f3ef2d184"),
                             Description = "Three actors accept an invitation to a Mexican village to perform their onscreen bandit fighter roles, unaware that it is the real thing.",
                             Director = "John Landis",
                             Duration = 110,
@@ -246,7 +249,7 @@ namespace CinemaApp.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2f801f4d-8865-4dfc-9267-046bbee508a9"),
+                            Id = new Guid("85db2b3e-4d02-49c7-b0b2-9a4eb0784d01"),
                             Description = "After investigating a mysterious transmission of unknown origin, the crew of a commercial spacecraft encounters a deadly lifeform.",
                             Director = "Ridley Scott",
                             Duration = 105,

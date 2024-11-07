@@ -25,7 +25,9 @@ namespace CinemaApp.Data
         public virtual DbSet<ApplicationUserMovie> ApplicationUsersMovies { get; set; }
 
         public virtual DbSet<Ticket> Tickets { get; set; }
-                
+
+        public virtual DbSet<Manager> Managers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); // pass the modelBuilder to the base constructor of IdentityDbContext
