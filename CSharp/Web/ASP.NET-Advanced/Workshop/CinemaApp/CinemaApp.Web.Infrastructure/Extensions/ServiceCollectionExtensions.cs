@@ -36,7 +36,7 @@ namespace CinemaApp.Web.Infrastructure.Extensions
                 Type[] constructArgs = new Type[2];
                 constructArgs[0] = type;
 
-                if (idPropInfo == null)
+                if (idPropInfo == null) // for example if it's a composite key
                 {
                     constructArgs[1] = typeof(object);
                 }
