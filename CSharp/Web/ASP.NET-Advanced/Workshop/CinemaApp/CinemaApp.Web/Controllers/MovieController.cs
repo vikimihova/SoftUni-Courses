@@ -1,8 +1,10 @@
 ﻿using CinemaApp.Data;
 using CinemaApp.Data.Models;
 using CinemaApp.Services.Data.Interfaces;
+using CinemaApp.Web.Infrastructure.Extensions;
 using CinemaApp.Web.ViewModels.Cinema;
 using CinemaApp.Web.ViewModels.Movie;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
@@ -12,13 +14,13 @@ namespace CinemaApp.Web.Controllers
 {
     public class MovieController : Controller
     {
-        private readonly CinemaDbContext dbContext;
         private readonly IMovieService movieService;
+        protected readonly IManagerService managerService;
 
-        public MovieController(CinemaDbContext dbContext, IMovieService movieService)
+        public MovieController(IMovieService movieService, IManagerService managerService)
         {
-            this.dbContext = dbContext;
             this.movieService = movieService;
+            this.managerService = managerService;
         }
 
         [HttpGet]
@@ -34,14 +36,37 @@ namespace CinemaApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        [Authorize]
+        public async Task<IActionResult> Create()
         {
+            // check if user is manager
+            string? userId = this.User.GetUserId();
+            bool isManager = await this.managerService
+                .IsUserManagerAsync(userId);
+
+            if (!isManager)
+            {
+                return this.RedirectToAction(nameof(Index));
+            }
+
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(AddMovieInputModel inputModel)
         {
+            // check if user is manager
+            string? userId = this.User.GetUserId();
+            bool isManager = await this.managerService
+                .IsUserManagerAsync(userId);
+
+            if (!isManager)
+            {
+                return this.RedirectToAction(nameof(Index));
+            }
+
+            // check model state
             if (!this.ModelState.IsValid)
             {
                 //Render the same form with user entered values with errors
@@ -80,8 +105,20 @@ namespace CinemaApp.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> AddToProgram(string id)
         {
+            // check if user is manager
+            string? userId = this.User.GetUserId();
+            bool isManager = await this.managerService
+                .IsUserManagerAsync(userId);
+
+            if (!isManager)
+            {
+                return this.RedirectToAction(nameof(Index));
+            }
+
+            // check guid
             Guid movieGuid = Guid.Empty;
             bool isGuidValid = this.IsGuidValid(id, ref movieGuid);
             if (!isGuidValid)
@@ -100,8 +137,20 @@ namespace CinemaApp.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddToProgram(AddMovieToCinemaViewModel model) 
         {
+            // check if user is manager
+            string? userId = this.User.GetUserId();
+            bool isManager = await this.managerService
+                .IsUserManagerAsync(userId);
+
+            if (!isManager)
+            {
+                return this.RedirectToAction(nameof(Index));
+            }
+
+            // check model state
             if (!this.ModelState.IsValid)
             {
                 return this.View(model);
