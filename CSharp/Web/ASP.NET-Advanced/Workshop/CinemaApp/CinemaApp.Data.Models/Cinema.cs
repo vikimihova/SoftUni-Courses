@@ -14,6 +14,8 @@ namespace CinemaApp.Data.Models
 
         public string Location { get; set; } = null!;
 
+        public bool IsDeleted { get; set; }
+
         public virtual ICollection<CinemaMovie> CinemaMovies { get; set; } = new HashSet<CinemaMovie>();
 
         public virtual ICollection<Ticket> Tickets { get; set; } = new HashSet<Ticket>();
