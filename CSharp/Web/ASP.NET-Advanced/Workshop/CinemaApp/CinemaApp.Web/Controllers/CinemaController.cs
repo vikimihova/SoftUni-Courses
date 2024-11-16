@@ -173,5 +173,70 @@ namespace CinemaApp.Web.Controllers
 
             return this.RedirectToAction(nameof(Details), "Cinema", new { id = formModel.Id });
         }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Delete(string? id)
+        {
+            // check if user is manager
+            string? userId = this.User.GetUserId();
+            bool isManager = await this.managerService
+                .IsUserManagerAsync(userId);
+
+            if (!isManager)
+            {
+                return this.RedirectToAction(nameof(Index));
+            }
+
+            bool isIdValid = Guid.TryParse(id, out Guid idGuid);
+
+            if (!isIdValid)
+            {
+                return this.RedirectToAction(nameof(Manage));
+            }
+
+            DeleteCinemaViewModel? cinemaToDeleteViewModel =
+                await this.cinemaService.GetCinemaForDeleteByIdAsync(idGuid);
+            if (cinemaToDeleteViewModel == null)
+            {
+                return this.RedirectToAction(nameof(Manage));
+            }
+
+            return this.View(cinemaToDeleteViewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> SoftDeleteConfirmed(DeleteCinemaViewModel cinema)
+        {
+            // check if user is manager
+            string? userId = this.User.GetUserId();
+            bool isManager = await this.managerService
+                .IsUserManagerAsync(userId);
+
+            if (!isManager)
+            {
+                return this.RedirectToAction(nameof(Index));
+            }
+
+            bool isIdValid = Guid.TryParse(cinema.Id, out Guid idGuid);
+
+            if (!isIdValid)
+            {
+                return this.RedirectToAction(nameof(Manage));
+            }
+
+            bool isDeleted = await this.cinemaService
+                .SoftDeleteCinemaAsync(idGuid.ToString());
+
+            if (!isDeleted)
+            {
+                TempData["ErrorMessage"] =
+                    "Unexpected error occurred while trying to delete the cinema! Please contact system administrator!";
+                return this.RedirectToAction(nameof(Delete), new { id = cinema.Id });
+            }
+
+            return this.RedirectToAction(nameof(Manage));
+        }
     }
 }
