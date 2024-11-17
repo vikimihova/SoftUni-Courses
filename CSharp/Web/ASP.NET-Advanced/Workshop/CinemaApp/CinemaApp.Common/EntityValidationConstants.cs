@@ -11,11 +11,17 @@ namespace CinemaApp.Common
         public static class MovieValidationConstants
         {
             public const int TitleMaxLength = 50;
+            public const int GenreMinLength = 5;
             public const int GenreMaxLength = 20;
+            public const int DirectorMinLength = 10;
             public const int DirectorMaxLength = 80;
+            public const int DescriptionMinLength = 50;
             public const int DescriptionMaxLength = 500;
             public const string DateViewFormat = "MM/yyyy";
+            public const int MinImageUrlLength = 8;
             public const int MaxImageUrlLength = 2083;
+            public const int DurationMinValue = 1;
+            public const int DurationMaxValue = 999;
         }
 
         public static class CinemaValidationConstants
