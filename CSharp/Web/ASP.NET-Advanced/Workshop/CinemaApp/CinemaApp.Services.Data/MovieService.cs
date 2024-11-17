@@ -8,6 +8,7 @@ using CinemaApp.Web.ViewModels.Movie;
 using System.Globalization;
 
 using static CinemaApp.Common.EntityValidationConstants.MovieValidationConstants;
+using static CinemaApp.Common.ApplicationConstants;
 using CinemaApp.Web.ViewModels.Cinema;
 
 namespace CinemaApp.Services.Data
@@ -147,6 +148,52 @@ namespace CinemaApp.Services.Data
             }
 
             return viewModel;
-        }        
+        }
+
+        // Edit movie
+        public async Task<EditMovieFormModel?> GetEditMovieFormModelByIdAsync(Guid id)
+        {
+            EditMovieFormModel? editMovieFormModel = await this.movieRepository
+                .GetAllAttached()
+                .To<EditMovieFormModel>()
+                .FirstOrDefaultAsync(m => m.Id.ToLower() == id.ToString().ToLower());
+
+            if (editMovieFormModel != null &&
+                editMovieFormModel.ImageUrl.Equals(NoImageUrl))
+            {
+                editMovieFormModel.ImageUrl = "No image";
+            }
+
+            return editMovieFormModel;
+        }
+
+        public async Task<bool> EditMovieAsync(EditMovieFormModel formModel)
+        {
+            Guid movieGuid = Guid.Empty;
+            if (!this.IsGuidValid(formModel.Id, ref movieGuid))
+            {
+                return false;
+            }
+
+            Movie editedMovie = AutoMapperConfig.MapperInstance.Map<Movie>(formModel);
+            editedMovie.Id = movieGuid;
+
+            bool isReleaseDateValid = DateTime.TryParseExact(formModel.ReleaseDate, DateViewFormat,
+                CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime releaseDate);
+            if (!isReleaseDateValid)
+            {
+                return false;
+            }
+
+            editedMovie.ReleaseDate = releaseDate;
+
+            if (formModel.ImageUrl == null ||
+                formModel.ImageUrl.Equals("No image"))
+            {
+                editedMovie.ImageUrl = NoImageUrl;
+            }
+
+            return await this.movieRepository.UpdateAsync(editedMovie);
+        }
     }
 }

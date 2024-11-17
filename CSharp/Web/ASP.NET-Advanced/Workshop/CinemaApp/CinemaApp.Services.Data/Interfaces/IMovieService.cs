@@ -1,9 +1,4 @@
 ﻿using CinemaApp.Web.ViewModels.Movie;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CinemaApp.Services.Data.Interfaces
 {
@@ -18,5 +13,9 @@ namespace CinemaApp.Services.Data.Interfaces
         Task<AddMovieToCinemaViewModel?> GetAddMovieToCinemaInputModelByIdAsync(Guid id);
 
         Task<bool> AddMovieToCinemasAsync(Guid movieId, AddMovieToCinemaViewModel model);
+
+        Task<EditMovieFormModel?> GetEditMovieFormModelByIdAsync(Guid id);
+
+        Task<bool> EditMovieAsync(EditMovieFormModel formModel);
     }
 }
