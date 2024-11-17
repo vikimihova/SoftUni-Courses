@@ -44,6 +44,7 @@ namespace CinemaApp.Services.Data
             {
                 model = new CinemaDetailsViewModel()
                 {
+                    Id = cinema.Id.ToString(),
                     Name = cinema.Name,
                     Location = cinema.Location,
                     Movies = cinema.CinemaMovies

@@ -10,6 +10,7 @@ namespace CinemaApp.Web.ViewModels.Cinema
             this.Movies = new HashSet<MovieCinemaViewModel>(); 
         }
 
+        public string Id { get; set; } = null!;
         public string Name { get; set; }
         public string Location { get; set; }
         public IEnumerable<MovieCinemaViewModel> Movies { get; set; }
