@@ -28,7 +28,6 @@ namespace CinemaApp.Common
         {
             public const string IncorrectPriceMessage = "Ticket price should be positive!";
             public const string IncorrectCountMessage = "Tickets count should be positive number!";
-        }
-    }
+        }    
     }
 }

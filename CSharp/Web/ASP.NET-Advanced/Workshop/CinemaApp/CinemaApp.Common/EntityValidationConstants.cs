@@ -45,5 +45,11 @@ namespace CinemaApp.Common
             public const string PriceMinValue = "0.01m";
             public const string PriceMaxValue = "79228162514264337593543950335m";
         }
+
+        public static class CinemaMovie
+        {
+            public const int AvailableTicketsMinValue = 0;
+            public const int AvailableTicketsMaxValue = 10000;
+        }
     }
 }
