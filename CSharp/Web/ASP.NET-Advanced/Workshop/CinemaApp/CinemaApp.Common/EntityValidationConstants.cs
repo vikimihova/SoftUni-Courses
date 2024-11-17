@@ -37,5 +37,13 @@ namespace CinemaApp.Common
             public const int PhoneNumberMinLength = 6;
             public const int PhoneNumberMaxLength = 15;
         }
+
+        public static class Ticket
+        {
+            public const int CountMinValue = 1;
+            public const int CountMaxValue = int.MaxValue;
+            public const string PriceMinValue = "0.01m";
+            public const string PriceMaxValue = "79228162514264337593543950335m";
+        }
     }
 }
