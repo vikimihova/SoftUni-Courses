@@ -239,6 +239,26 @@ namespace CinemaApp.Web.Controllers
         }
 
 
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Manage()
+        {
+            // check if user is manager
+            string? userId = this.User.GetUserId();
+            bool isManager = await this.managerService
+                .IsUserManagerAsync(userId);
+
+            if (!isManager)
+            {
+                return this.RedirectToAction(nameof(Index));
+            }
+
+            IEnumerable<MovieViewModel> movies =
+                await this.movieService.IndexGetAllMoviesAsync();
+
+            return this.View(movies);
+        }
+
         protected bool IsGuidValid(string? id, ref Guid parsedGuid)
         {
             // Non-existing parameter in the URL
