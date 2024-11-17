@@ -50,10 +50,12 @@ namespace CinemaApp.Services.Data
                     Movies = cinema.CinemaMovies
                         .Select(cm => new MovieCinemaViewModel()
                         {
+                            Id = cm.Movie.Id.ToString(),
                             Title = cm.Movie.Title,
                             Genre = cm.Movie.Genre,
                             Duration = cm.Movie.Duration,
                             Description = cm.Movie.Description,
+                            AvailableTickets = cm.AvailableTickets,
                         })
                         .ToArray()
                 };
