@@ -173,6 +173,72 @@ namespace CinemaApp.Web.Controllers
             return this.RedirectToAction(nameof(Index), "Cinema");
         }
 
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Edit(string? id)
+        {
+            // check if user is manager
+            string? userId = this.User.GetUserId();
+            bool isManager = await this.managerService
+                .IsUserManagerAsync(userId);
+
+            if (!isManager)
+            {
+                return this.RedirectToAction(nameof(Index));
+            }
+
+            // check if Guid is valid
+            Guid movieGuid = Guid.Empty;
+            bool isIdValid = this.IsGuidValid(id, ref movieGuid);
+            if (!isIdValid)
+            {
+                return this.RedirectToAction(nameof(Index));
+            }
+
+            // get view model
+            EditMovieFormModel? formModel = await this.movieService
+                .GetEditMovieFormModelByIdAsync(movieGuid);
+            if (formModel == null)
+            {
+                return this.RedirectToAction(nameof(Index));
+            }
+
+            return this.View(formModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Edit(EditMovieFormModel formModel)
+        {
+            // check if user is manager
+            string? userId = this.User.GetUserId();
+            bool isManager = await this.managerService
+                .IsUserManagerAsync(userId);
+
+            if (!isManager)
+            {
+                return this.RedirectToAction(nameof(Index));
+            }
+
+            // check model state
+            if (!ModelState.IsValid)
+            {
+                return this.View(formModel);
+            }
+
+            // check if movie can be updated
+            bool isUpdated = await this.movieService
+                .EditMovieAsync(formModel);
+            if (!isUpdated)
+            {
+                ModelState.AddModelError(string.Empty, "Unexpected error occurred while updating the cinema! Please contact administrator");
+                return this.View(formModel);
+            }
+
+            return this.RedirectToAction(nameof(Details), new { id = formModel.Id });
+        }
+
+
         protected bool IsGuidValid(string? id, ref Guid parsedGuid)
         {
             // Non-existing parameter in the URL
