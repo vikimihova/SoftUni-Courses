@@ -46,7 +46,7 @@ All SoftUni courses in reverse chronological order:
   :white_check_mark: Best Practices And Architecture
 
   :white_check_mark: NoSQL
-<details>
+</details>
 
 ## C# DB - MS SQL (05-06/2024) - [Certificate](https://softuni.bg/certificates/details/216747/4c422610)
 <details>
@@ -67,7 +67,7 @@ All SoftUni courses in reverse chronological order:
   :white_check_mark: Functions and Stored Procedures
 
   :white_check_mark: Triggers and Transactions
-<details>
+</details>
 
 ## JS Front-End (02-04/2024) - [Certificate](https://softuni.bg/certificates/details/212349/4de170c5)
 <details>
@@ -88,7 +88,7 @@ All SoftUni courses in reverse chronological order:
   :white_check_mark: HTTP and REST
 
   :white_check_mark: Asynchronous Programming
-<details>
+</details>
 
 ## HTML & CSS (01-02/2024) - [Certificate](https://softuni.bg/certificates/details/205241/87dd0020)
 <details>
@@ -105,7 +105,7 @@ All SoftUni courses in reverse chronological order:
   :white_check_mark: Responsive Web Design
 
   :white_check_mark: Form & Working with Forms
-<details>
+</details>
 
 ## C# OOP (10-12/2023) - [Certificate](https://softuni.bg/certificates/details/200380/eb8dd088)
 <details>
@@ -130,7 +130,7 @@ All SoftUni courses in reverse chronological order:
   :white_check_mark: Mocking and Test Driven Development
 
   :white_check_mark: Design Patterns
-<details>
+</details>
 
 ## C# Advanced (09-10/2023) - [Certificate](https://softuni.bg/certificates/details/188405/77d72667)
 <details>
@@ -155,7 +155,7 @@ All SoftUni courses in reverse chronological order:
   :white_check_mark: Generics
 
   :white_check_mark: Iterators and Comparators
-<details>
+</details>
 
 ## C# Programming Fundamentals (05-08/2023) - [Certificate](https://softuni.bg/certificates/details/179471/5368a254)
 <details>
@@ -198,7 +198,7 @@ All SoftUni courses in reverse chronological order:
   :white_check_mark: QA Introduction
 
   :white_check_mark: Basic Web Project
-<details>
+</details>
 
 ## C# Programming Basics (02-03/2023) - [Certificate](https://softuni.bg/certificates/details/163712/8d167956)
 <details>
@@ -215,4 +215,4 @@ All SoftUni courses in reverse chronological order:
   :white_check_mark: While-Loop
 
   :white_check_mark: Nested Loops
-<details>
+</details>
