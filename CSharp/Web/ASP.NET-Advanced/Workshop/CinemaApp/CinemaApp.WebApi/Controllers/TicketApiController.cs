@@ -22,7 +22,6 @@ namespace CinemaApp.WebApi.Controllers
         }
 
         [HttpGet("[action]/{id?}")]
-        [ManagerOnly]
         [ProducesResponseType(typeof(CinemaDetailsViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -47,7 +46,6 @@ namespace CinemaApp.WebApi.Controllers
         }
 
         [HttpPost("[action]")]
-        [ManagerOnly]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
