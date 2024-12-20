@@ -2,7 +2,30 @@
 Exercises from SoftUni courses.
 
 All SoftUni courses in reverse chronological order:
-## C# Web - Advanced ASP.NET (ongoing)
+## C# Web - Advanced ASP.NET (10-12/2024) - [Certificate](https://softuni.bg/certificates/details/232774/175fc259)
+<details>
+  <summary>COURSE CURRICULUM:</summary>
+
+  :white_check_mark: Routing and Binding, Views, DI and Services
+
+  :white_check_mark: Application Flow, Filters & Middleware
+
+  :white_check_mark: Web API
+
+  :white_check_mark: Web Application Security and ASP.NET Core
+
+  :white_check_mark: ASP.NET Core Identity, External Login and JSON Web Tokens
+
+  :white_check_mark: Project Architecture
+
+  :white_check_mark: Testing
+
+  :white_check_mark: Advanced Topics
+
+  :white_check_mark: SignalR
+
+  :white_check_mark: Azure, Deployment and CI
+</details>
 
 ## C# Web - Fundamentals ASP.NET (09-10/2024) - [Certificate](https://softuni.bg/certificates/details/228329/31231b7b)
 <details>
