@@ -16,11 +16,11 @@ namespace CinemaApp.Web.ViewModels.Movie
         [Required(ErrorMessage = "Movie title is required.")]
         [MinLength(2)]
         [MaxLength(TitleMaxLength)]
-        public string Title { get; set; }
+        public string Title { get; set; } = null!;
 
         [Required]
         [MaxLength(GenreMaxLength)]
-        public string Genre { get; set; }
+        public string Genre { get; set; } = null!;
 
         [Required]
         public string ReleaseDate { get; set; } = null!;
@@ -30,11 +30,11 @@ namespace CinemaApp.Web.ViewModels.Movie
 
         [Required]
         [MaxLength(DirectorMaxLength)]
-        public string Director { get; set; }
+        public string Director { get; set; } = null!;
 
         [Required]
         [MaxLength(DescriptionMaxLength)]
-        public string Description { get; set; }
+        public string Description { get; set; } = null!;
 
         [MaxLength(MaxImageUrlLength)]
         public string? ImageUrl {  get; set; }
