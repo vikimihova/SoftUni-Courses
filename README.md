@@ -1,5 +1,7 @@
 # SoftUni-Courses
-Exercises from SoftUni courses.
+Exercises and exams from SoftUni courses. <br/>
+
+❗❗❗ IMPORTANT: SoftUni-provided skeletons with pre-written code deliberately excluded from solutions. You will find a comment where applicable.
 
 All SoftUni courses in reverse chronological order:
 ## C# Web - Advanced ASP.NET (10-12/2024) - [Certificate](https://softuni.bg/certificates/details/232774/175fc259)
