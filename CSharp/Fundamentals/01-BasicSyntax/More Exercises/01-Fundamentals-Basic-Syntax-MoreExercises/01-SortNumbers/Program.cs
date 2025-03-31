@@ -2,21 +2,9 @@
 int b = int.Parse(Console.ReadLine());
 int c = int.Parse(Console.ReadLine());
 
-int tempMax = Math.Max(a, b);
-int tempMin = Math.Min(a, b);
-
-int maxNumber = Math.Max(tempMax, c);
-int minNumber = Math.Min(tempMin, c);
-int midNumber;
-
-if (maxNumber == c)
-{
-    midNumber = tempMax;
-}
-else
-{
-    midNumber = Math.Max(tempMin, c);
-}
+int maxNumber = Math.Max(Math.Max(a, b), c);
+int minNumber = Math.Min(Math.Min(a, b), c);
+int midNumber = a + b + c - maxNumber - minNumber;
 
 Console.WriteLine(maxNumber);
 Console.WriteLine(midNumber);
