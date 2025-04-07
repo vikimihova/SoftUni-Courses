@@ -1,29 +1,29 @@
-﻿int[] array = Console.ReadLine()
+﻿int[] unfoldedArray = Console.ReadLine()
     .Split(' ', StringSplitOptions.RemoveEmptyEntries)
     .Select(int.Parse)
     .ToArray();
 
-int rowLength = array.Length / 2;
-int numbersToFold = array.Length / 4;
+int rowLength = unfoldedArray.Length / 2;
+int numbersToFold = rowLength / 2;
 
 int[] topRow = new int[rowLength];
 int[] bottomRow = new int[rowLength];
-int[] resultRow = new int[rowLength];
+int[] productRow = new int[rowLength];
 
 for (int i = 0; i < rowLength; i++)
 {
-    int stayIndex = numbersToFold + i;
+    int leaveIndex = numbersToFold + i;
     int foldIndex = numbersToFold - i - 1;
 
     if (foldIndex < 0)
     {
-        foldIndex += array.Length;
+        foldIndex += unfoldedArray.Length;
     }
 
-    topRow[i] = array[foldIndex];
-    bottomRow[i] = array[stayIndex];
+    topRow[i] = unfoldedArray[foldIndex];
+    bottomRow[i] = unfoldedArray[leaveIndex];
 
-    resultRow[i] = topRow[i] + bottomRow[i];
+    productRow[i] = topRow[i] + bottomRow[i];
 }
 
-Console.WriteLine(string.Join(" ", resultRow));
+Console.WriteLine(string.Join(" ", productRow));
