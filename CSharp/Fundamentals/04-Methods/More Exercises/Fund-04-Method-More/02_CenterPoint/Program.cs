@@ -17,10 +17,10 @@
 
         static string GetClosestCoordinatesToCenter(int x1, int y1, int x2, int y2)
         {
-            int averageDistancePoint1 = Math.Abs(x1 + y1);
-            int averageDistancePoint2 = Math.Abs(x2 + y2);
+            int absoluteDistance1 = Math.Abs(x1 + y1);
+            int absoluteDistance2 = Math.Abs(x2 + y2);
 
-            if (averageDistancePoint1 <= averageDistancePoint2)
+            if (absoluteDistance1 <= absoluteDistance2)
             {
                 return $"({x1}, {y1})";
             }
