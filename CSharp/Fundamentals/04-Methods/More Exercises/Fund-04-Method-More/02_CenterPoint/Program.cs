@@ -4,16 +4,22 @@
     {
         static void Main(string[] args)
         {
-            // read the coordinates of the first point
-            int x1 = int.Parse(Console.ReadLine());
-            int y1 = int.Parse(Console.ReadLine());
+            int[] point1 = ReadPointCoordinates();
+            int[] point2 = ReadPointCoordinates();
 
-            // read the coordinates of the second point
-            int x2 = int.Parse(Console.ReadLine());
-            int y2 = int.Parse(Console.ReadLine());
             PrintClosestPointToCenter(point1, point2);
         }
 
+        static int[] ReadPointCoordinates()
+        {
+            int[] coordinates = new int[2];
+
+            for (int i = 0; i < 2; i++)
+            {
+                coordinates[i] = int.Parse(Console.ReadLine());
+            }
+
+            return coordinates;
         }
 
         static void PrintClosestPointToCenter(int[] point1, int[] point2)
