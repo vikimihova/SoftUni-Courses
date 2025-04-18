@@ -2,6 +2,46 @@
 Exercises from SoftUni courses.
 
 All SoftUni courses in reverse chronological order:
+## Containers and Cloud (02-04/2025) - [Certificate](https://softuni.bg/certificates/details/242435/a44c6e1f)
+<details>
+  <summary>COURSE CURRICULUM:</summary>
+
+  :white_check_mark: Linux and Linux Shell - Part I
+
+  :white_check_mark: Linux and Linux Shell - Part II
+
+  :white_check_mark: Containers and Docker
+
+  :white_check_mark: Docker Compose and Container Orchestration
+
+  :white_check_mark: Cloud Computing
+
+  :white_check_mark: Infrastructure as Code
+
+  :white_check_mark: App Monitoring Tools
+</details>
+
+## Software Engineering and DevOps (01-02/2025) - [Certificate](https://softuni.bg/certificates/details/238864/a6f48543)
+<details>
+  <summary>COURSE CURRICULUM:</summary>
+
+  :white_check_mark: Software Engineering Fundamentals
+
+  :white_check_mark: Introduction to DevOps and Software Development Methodologies
+
+  :white_check_mark: Version Control with Git
+
+  :white_check_mark: Automated Testing
+
+  :white_check_mark: Continuous Integration and Continuous Delivery (CI/CD) with GiHub Actions
+
+  :white_check_mark: Continuous Integration and Continuous Delivery (CI/CD) with Jenkins
+
+  :white_check_mark: Development Workflow
+
+  :white_check_mark: Software Development Methodologies
+</details>
+
 ## C# Web - Advanced ASP.NET (10-12/2024) - [Certificate](https://softuni.bg/certificates/details/232774/175fc259)
 <details>
   <summary>COURSE CURRICULUM:</summary>
